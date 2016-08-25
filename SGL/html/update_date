@@ -1,0 +1,6 @@
+#! /bin/sh
+
+DTIME=`date +"%B %e, %Y"`
+sed 's/DATESTAMP/'"${DTIME}"'/g' titlepage.html.keep > index.html
+echo "Updating title page date: ${DTIME}"
+

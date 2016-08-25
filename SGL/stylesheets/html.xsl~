@@ -1,0 +1,56 @@
+<?xml version='1.0'?> 
+<xsl:stylesheet 
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"> 
+
+<xsl:import
+ href="/usr/share/docbook-xsl/xhtml/chunk.xsl"/> 
+
+<xsl:param name="html.stylesheet" select="'../stylesheets/progcpp.css'"/> 
+<xsl:param name="section.autolabel" select="1"/> 
+<xsl:param name="section.label.includes.component.label" select="1"/> 
+<xsl:param name="admon.graphics" select="1"/>
+<xsl:param name="admon.graphics.path" select="'../images/'"/>
+<xsl:param name="profile.arch" select="'html'"/>
+
+<xsl:param name="local.l10n.xml" select="document('')"/> 
+<l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
+  <l:l10n language="en"> 
+    <l:context name="xref-number-and-title"> 
+      <l:template name="appendix" text="Appendix %n"/> 
+      <l:template name="chapter" text="Chapter %n"/> 
+      <l:template name="table" text="Table %n"/> 
+      <l:template name="sect1" text="Section %n"/> 
+      <l:template name="example" text="Example %n"/> 
+      <l:template name="figure" text="Figure %n"/> 
+    </l:context>    
+  </l:l10n>
+</l:i18n>
+
+
+<!--
+<xsl:template match="screen[@status = 'output']" mode="class.value">
+  <xsl:value-of select="'screen-output'"/>
+</xsl:template>
+-->
+
+<xsl:template name="user.header.content">
+    <!--
+    <xsl:apply-templates select="//copyright[1]"
+                         mode="titlepage.mode"/> -->
+    <i>Copyright</i> &#160; &#169; <i>2009 Richard L.
+    Halterman</i>&#160;&#160;&#160;
+    <font color="red">Draft Version 20090531</font>
+    <hr/>
+</xsl:template>
+
+<xsl:template name="user.footer.content">
+    <!--
+    <xsl:apply-templates select="//copyright[1]"
+                         mode="titlepage.mode"/> -->
+    <hr/>
+    <i>Copyright</i> <font>&#160; &#169;</font>  <i>2009 Richard L.
+    Halterman</i>&#160;&#160;&#160;
+    <font color="red">Draft Version 20090531</font>
+</xsl:template>
+
+</xsl:stylesheet>  

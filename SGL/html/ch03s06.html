@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.6. User Input</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with SGL" /><link rel="prev" href="ch03s05.html" title="3.5. Displaying Graphics" /><link rel="next" href="ch03s07.html" title="3.7. Limitations of SGL" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.userinput"></a>3.6. User Input</h2></div></div></div><p>
+The user can provide input by typing keys and manipulating the
+mouse.  An application's window handles keyboard activity
+by overriding the
+<code class="varname">key_pressed</code> method inherited from
+<code class="varname">Window</code>.  The SGL event manager directs mouse 
+events to one of four mouse processing methods: 
+<code class="varname">mouse_pressed</code>, 
+<code class="varname">mouse_released</code>, <code class="varname">mouse_moved</code>,
+and <code class="varname">mouse_dragged</code>.  If the user presses a key on
+the keyboard, the event manager calls 
+the window's <code class="varname">key_pressed</code> method.
+Clients override these
+methods to provide behavior appropriate for the application.
+</p><p>
+<a class="xref" href="ch03s06.html#prog:colorbox.cpp" title="Example 3.3. User Input">Example 3.3</a> allows a user to change the 
+color of a rectangular box by clicking a mouse button or pressing
+the T (for toggle) key on the keyboard.
+</p><div class="example"><a id="prog:colorbox.cpp"></a><p class="title"><strong>Example 3.3. User Input</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;memory&gt;  //  For make_shared
+#include &lt;GL/sgl.h&gt;
+
+using namespace sgl;
+
+class ColorBox: public Window {
+protected:
+    bool is_red;
+public:
+    ColorBox(): Window("Click Me", 100, 100, 400, 300, 
+                          0.0, 100.0, 0.0, 100.0), is_red(true) {}
+
+    void paint() override {
+        if (is_red)       
+            set_color(RED);
+        else
+            set_color(BLUE);
+        fill_rectangle(30.0, 30.0, 40.0, 40.0);
+    }
+
+    void mouse_pressed(double, double, MouseButton) override {
+        is_red = !is_red;  //  Toggle the color
+        repaint();         //  Request a repaint
+    }
+
+    void key_pressed(int key, double x, double y) override {
+        //  Did the user press the T key?
+        if (key == 'T' || key == 't') {
+            is_red = !is_red;  //  Toggle the color
+            repaint();         //  Request a repaint
+        }
+        //  Call base class method in case user pressed
+        //  Alt-F4 to close the window
+        Window::key_pressed(key, x, y);
+    }
+};
+
+int main() {
+    //  Create the window and execute it
+    std::make_shared&lt;ColorBox&gt;()-&gt;run();
+}
+</pre></div></div><p><br class="example-break" />
+Each input handling method will usually include a call to 
+<code class="varname">repaint</code>.
+This is because the user's input
+generally affects what the program displays.  In the case of 
+<a class="xref" href="ch03s06.html#prog:colorbox.cpp" title="Example 3.3. User Input">Example 3.3</a> the user's mouse click is
+supposed to change
+the color of the box, but the window is repainted only when the 
+event manager calls <code class="varname">paint</code>.  The
+<code class="varname">repaint</code> call notifies the event manager that
+the contents of the window need to be redrawn.  Client code should
+not call <code class="varname">paint</code> directly.
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.5. Displaying Graphics </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.7. Limitations of SGL</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+	This work is licensed under a 
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+        Creative Commons License</a>.
+	</div></body></html>

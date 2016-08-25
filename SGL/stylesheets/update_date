@@ -1,0 +1,6 @@
+#! /bin/sh
+
+DTIME=`date +"%B %e, %Y"`
+sed 's/DATESTAMP/'"${DTIME}"'/g' html.xsl_keep > html.xsl
+echo "Updating date: ${DTIME}"
+

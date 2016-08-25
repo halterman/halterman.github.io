@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.4. Adding a Popup Menu</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s03.html" title="4.3. Adding Graphical Objects" /><link rel="next" href="ch04s05.html" title="4.5. Animation" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.popupmenu"></a>4.4. Adding a Popup Menu</h2></div></div></div><p>
+<a class="xref" href="ch04s04.html#prog:popup.cpp" title="Example 4.2. Changing Colors with a Popup Menu">Example 4.2</a> is a variation of 
+<a class="xref" href="ch03s06.html#prog:colorbox.cpp" title="Example 3.3. User Input">Example 3.3</a>.  Instead of clicking the mouse
+button inside the window to change the color of the box, the user can
+select a color from a popup menu.  
+The menu is activated by
+pressing and releasing the right mouse button when the mouse
+pointer is within the window.
+<a class="xref" href="ch04s04.html#fig:colorboxmenu" title="Figure 4.3. Color Box with Popup Menu">Figure 4.3</a> is a picture of the running
+program, and <a class="xref" href="ch04s04.html#prog:popup.cpp" title="Example 4.2. Changing Colors with a Popup Menu">Example 4.2</a> provides the source
+code.
+</p><div class="figure"><a id="fig:colorboxmenu"></a><p class="title"><strong>Figure 4.3. Color Box with Popup Menu</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/colorboxmenu.png" align="middle" alt="Color Box with Popup Menu" /></div></div></div><p><br class="figure-break" />
+</p><div class="example"><a id="prog:popup.cpp"></a><p class="title"><strong>Example 4.2. Changing Colors with a Popup Menu</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;memory&gt;
+#include &lt;GL/sgl.hpp&gt;
+
+using namespace sgl;
+using std::make_shared;
+using std::shared_ptr;
+
+class ColorBoxWindow: public Window {
+protected:
+    //  Access to this custom popup menu class is restricted to
+    //  code within this ColorBoxWindow class.
+    class ColorSelectorPopup : public PopupMenu {
+    public:
+        //  The constructor associates a menu item with an action
+        //  to perform.  Each action is a method within this class.
+        ColorSelectorPopup(ColorBoxWindow *win) : PopupMenu(win) {
+            add_menu_item("Red", &amp;ColorBoxWindow::set_color_red);
+            add_menu_item("Green", &amp;ColorBoxWindow::set_color_green);
+            add_menu_item("Blue", &amp;ColorBoxWindow::set_color_blue);
+            add_menu_item("Black", &amp;ColorBoxWindow::set_color_black);
+            add_menu_item("Quit", &amp;ColorBoxWindow::quit);
+        }
+    };
+    Color color;
+    shared_ptr&lt;ColorSelectorPopup&gt; menu;
+public:
+    ColorBoxWindow(): Window("Color Box", 100, 100, 400, 300,
+        0, 100, 0, 100), color(RED), menu(make_shared&lt;ColorSelectorPopup&gt;(this)){}
+
+    void paint() override {
+        set_color(color);
+        fill_rectangle(25, 25, 50, 50);
+    }
+
+    virtual void set_box_color(const Color&amp; c) {
+        color = c;
+        repaint();
+    }
+
+    virtual void set_color_green() {
+        color = GREEN;
+        repaint();
+    }
+
+    virtual void set_color_blue() {
+        color = BLUE;
+        repaint();
+    }
+
+    virtual void set_color_red() {
+        color = RED;
+        repaint();
+    }
+
+    virtual void set_color_black() {
+        color = BLACK;
+        repaint();
+    }
+
+    virtual void quit() {
+        exit(0);
+    }
+
+    //  Pressing the left mouse button lightens the box
+    //  Pressing the left mouse button and the shift key
+    //  darkens the box
+    void mouse_pressed(double, double, MouseButton) override {
+        double inc = (get_key_modifiers() == SHIFT_KEY_MODIFIER)
+                   ? -0.05 : 0.05;
+        color.red += inc;
+        color.green += inc;
+        color.blue += inc;
+        repaint();
+    }
+};
+
+int main() {
+    make_shared&lt;ColorBoxWindow&gt;()-&gt;run();
+}
+</pre></div></div><p><br class="example-break" />
+The <code class="varname">ColorSelectorPopup</code> menu is associated with
+the application's main window.  The constructor populates the menu
+with with text labels and their associated actions.  Each
+action corresponds to a method within the ColorSelectorPopup class.
+In turn, each action method can call one or more methods in 
+the window object to
+change its state, it this case changing the color of the box.
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.5. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+	This work is licensed under a 
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+        Creative Commons License</a>.
+	</div></body></html>

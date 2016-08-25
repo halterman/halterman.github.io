@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.5. Animation</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s04.html" title="4.4. Adding a Popup Menu" /><link rel="next" href="ch04s06.html" title="4.6. Circle Random Walk" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.animation"></a>4.5. Animation</h2></div></div></div><p>
+<a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4.3. Clock Animation">Example 4.3</a> illustrates the use of a
+SGL timer that controls the aimation of an analog clock.
+</p><div class="example"><a id="prog:clockanimation.cpp"></a><p class="title"><strong>Example 4.3. Clock Animation</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;GL/sgl.hpp&gt;
+#include &lt;cmath&gt;
+#include &lt;sstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;memory&gt;
+
+
+using namespace sgl;
+using std::ostringstream;
+
+const double MIN_X = -100.0,
+             MAX_X =  100.0,
+             MIN_Y = -100.0,
+             MAX_Y =  100.0;
+
+const int FONT_SIZE = 18;
+
+const int TIME_INCREMENT = 200;
+
+const double PI = 3.141592653589793,  //  Close enough!
+             HALF_PI = PI/2.0;
+
+ostringstream oss;
+
+Point minutes_to_position(int minutes, double offset) {
+    double x = MAX_X/2.0 - offset, 
+           y = 0.0,
+           fraction = -PI*minutes/30 + HALF_PI,
+           sine = sin(fraction), 
+           cosine = cos(fraction);
+    Point result;
+    result.x = x*cosine - y*sine;
+    result.y = x*sine   + y*cosine;
+    return result;
+}
+
+Point hours_to_position(int hours, int minutes, double offset) {
+    return minutes_to_position(static_cast&lt;int&gt;((hours + minutes/60.0)*5), offset);
+}
+
+string time_to_string(int hours, int minutes) {
+    oss.str("");  //  Clear the output string
+    oss.width(2);
+    oss.fill(' ');
+    oss &lt;&lt; ((hours == 0)? 12 : hours) &lt;&lt; ":";
+    oss.width(2);
+    oss.fill('0');
+    oss &lt;&lt; minutes;
+    return oss.str();
+}
+
+class ClockWindow: public Window {
+    int hours;
+    int minutes;
+public:
+    ClockWindow(): Window("Clock", 100, 100, 500, 500,
+        MIN_X, MAX_X, MIN_Y, MAX_Y), hours(0), minutes(0) {
+        start_timer(TIME_INCREMENT);
+    }
+
+    void paint() override {
+        //  Draw frame
+        set_line_width(1);
+        draw_circle(0.0, 0.0, MIN_X/2.0 - 5.0);
+        //  Draw center
+        fill_circle(0.0, 0.0, 2.0);
+        //  Draw positions
+        Point loc;
+        for (int i = 0; i &lt; 12; i++) {
+            loc = hours_to_position(i, 0, 1.0);
+            fill_rectangle(loc.x - 2.0, loc.y - 2.0, 4.0, 4.0);
+        }
+        //  Draw minute hand
+        set_line_width(2);
+        loc = minutes_to_position(minutes, 5.0);
+        draw_line(0.0, 0.0, loc.x, loc.y);
+        //  Draw hour hand
+        set_line_width(5);
+        loc = hours_to_position(hours, minutes, 20.0);
+        draw_line(0.0, 0.0, loc.x, loc.y);
+        //  Print digital text
+        draw_text(time_to_string(hours, minutes).c_str(), -5.0, MIN_Y + 5.0, 18);
+    }
+
+    void update_time() {
+        minutes++;
+        if (minutes == 60) {
+            minutes = 0;
+            hours++;
+            if (hours == 12)
+                hours = 0;
+        }
+        repaint();
+    }
+
+    void timer_expired() {
+        update_time();
+        start_timer(TIME_INCREMENT);
+    }
+
+    void mouse_pressed(double, double, MouseButton) override {
+        update_time();
+    }
+
+    void key_pressed(int key, double x, double y) override {
+        update_time();
+        Window::key_pressed(key, x, y);
+    }
+
+    void resized(int w, int h) override {
+        if (w != h) {
+            if (w &lt; h)
+                h = w;
+            else
+                w = h;
+            set_window_size(w, h);
+        }
+        Window::resized(w, h);
+    }
+};
+
+int main() {
+    std::make_shared&lt;ClockWindow&gt;()-&gt;run();
+}
+</pre><a class="xref" href="ch04s05.html#fig:animatedclock" title="Figure 4.4. Animating a Clock">Figure 4.4</a> shows the program in action.
+</div></div><p><br class="example-break" />
+</p><div class="figure"><a id="fig:animatedclock"></a><p class="title"><strong>Figure 4.4. Animating a Clock</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/animatedclock.png" align="middle" alt="Animating a Clock" /></div></div></div><p><br class="figure-break" />
+Observe that the program provides a digital display of the time in
+addition to the analog clock face.
+</p><p>
+The window's constructor sets a timer running.
+Every
+200 milliseconds (1/5 of a second) the
+event manager calls the window's <code class="varname">timer_expired</code> method.
+The <code class="varname">timer_expired</code> method calls the
+<code class="varname">update_time</code> method to adjust the
+<code class="varname">hours</code> and
+<code class="varname">minutes</code> values and notifies the event manager 
+that the window needs to be
+repainted.   The <code class="varname">paint</code> method draws the clock
+with the hands in their proper places based on the values of
+<code class="varname">hours</code> and <code class="varname">minutes</code>.  Some
+helper functions take care of the mathematics.
+Observe that a SGL timer (like a GLUT timer) sends the notification
+event once; the programmer must restart the timer after each
+timeout to continuously send notifications to the window.
+</p><p>
+In <a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4.3. Clock Animation">Example 4.3</a> in addition to 
+the automatic animation controlled by the timer, the
+user can speed up the minute time lapses by pressing a mouse button
+or pressing a key.
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Adding a Popup Menu </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.6. Circle Random Walk</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+	This work is licensed under a 
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+        Creative Commons License</a>.
+	</div></body></html>

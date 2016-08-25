@@ -1,0 +1,46 @@
+draw_axes(10.0, 10.0);   //  Draw axes
+fill_circle(50, 30, 35);*/
+
+set_color(LIGHT_GRAY);
+
+if ( pt1 )  //  First point exists
+{
+    set_color(DARK_GREEN);  //  
+    draw_text(print_point(pt1->get_x(), pt1->get_y()), pt1->get_x() + 5, pt1->get_y() + 5, 10);
+
+    if ( pt2 )
+    {   //  First line ready to render
+        draw_extended_line(pt1, pt2);
+        draw_text(line_equation(pt1->get_x(), pt1->get_y(), 
+                                pt2->get_x(), pt2->get_y()), 
+                  MIN_X + 10, MIN_Y + 10, 10);
+        draw_text(print_point(pt2->get_x(), pt2->get_y()), pt2->get_x() + 5, pt2->get_y() + 5, 10);
+
+        if ( pt3 )
+        {
+            set_color(BLUE);  //  Blue
+            draw_text(print_point(pt3->get_x(), pt3->get_y()), pt3->get_x() + 5, pt3->get_y() + 5, 10);
+
+            if ( pt4 )
+            {   //  Second line ready to render
+                draw_extended_line(pt3, pt4);
+                draw_text(line_equation(pt3->get_x(), pt3->get_y(), 
+                pt4->get_x(), pt4->get_y()), MIN_X + 10, MIN_Y + 15, 10);
+                draw_text(print_point(pt4->get_x(), pt4->get_y()),
+                                      pt4->get_x() + 5, pt4->get_y() + 5, 10);
+                double slope1 = slope(pt1->get_x(), pt1->get_y(), pt2->get_x(), pt2->get_y()),
+                       intercept1 = intercept(pt1->get_x(), pt1->get_y(), pt2->get_x(), pt2->get_y()),
+                       slope2 = slope(pt3->get_x(), pt3->get_y(), pt4->get_x(), pt4->get_y()),
+                       intercept2 = intercept(pt3->get_x(), pt3->get_y(), pt4->get_x(), pt4->get_y());
+                //  Compute intersection, if possible
+                intersection(slope1, intercept1, slope2, intercept2, xi, yi);
+                //  Draw the point in the window
+                set_color(RED);  //  Red
+                //draw_point(xi, yi);
+                fill_circle(xi, yi, 2);
+                draw_text(print_point(xi, yi), xi + 5, yi + 5, 10);
+            }
+        }
+    }
+}
+

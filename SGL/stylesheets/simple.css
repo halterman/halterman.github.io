@@ -1,0 +1,39 @@
+.programlisting {
+    font-family: monospace ;
+    font-size: 1em ;
+    display: block ;
+    padding: 10px ;
+    border: 1px solid #bbb ;
+    background-color: #ddd ;
+    color: #000 ;   
+    overflow: auto ;
+    border-radius: 2.5px ;
+    -moz-border-radius: 2.5px ;
+    margin: 0.5em 5em ;
+}
+
+.varname {
+	font-family: monospace ;
+	font-weight: bold ;
+    font-size: larger ;
+	color: #000 ; 
+}
+
+.figure {
+    display: block;
+    padding: 10px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin: 0em 0em;
+}
+
+a { 
+    text-decoration: none;
+    border-bottom: 1px dotted #000; 
+}
+
+a:hover {
+    background-color: #777;
+    color: #fff; 
+}
+

@@ -1,0 +1,382 @@
+<chapter><title>The Context of Software Develpment</title>
+
+
+	<para>
+	A computer program, from one perspective, is a sequence of instructions
+	that dictate the flow of electrical impulses within a computer system. 
+	These impulses affect the computer's memory and interact with the peripheral
+	devices like the display screen in such a way as to produce the
+	``magic'' that permits humans to perform useful tasks, solve high-level
+	problems, and play games.  
+	One program allows a personal computer to assume the role of a
+	financial calculator, while another transforms the machine into a worthy
+	chess opponent.  Note the two extremes here:
+	
+	<itemizedlist mark="bullet">
+	    <listitem> <para>
+                  at the lower, more concrete level electrical impulses alter the 
+		  internal state of the computer, while </para></listitem>
+	    <listitem> <para>
+                  at the higher, more abstract level computer users 
+                  accomplish </para></listitem>
+	</itemizedlist>
+	So well is the higher-level illusion achieved that most computer users
+	are oblivious to the lower-level activity (the machinery under the hood,
+	so to speak).  Surprisingly, perhaps, most programmers today write
+	software at this higher, more abstract, level also.  An accomplished
+	computer programmer can develop sophisticated software with little or no
+	interest or knowledge of the actual computer system upon which it runs.
+	Powerful software construction tools hide the lower-level details 
+	from programmers,
+	allowing them to solve problems in higher-level terms.  
+	</para>
+
+	<para>
+	The concepts of computer programming are logical and mathematical
+	in nature.  In theory, computer programs can be developed without the
+	use of a computer.  Programmers can discuss the viability of a program
+	and reason about its correctness and efficiency by examining abstract
+	symbols that correspond to the features of real-world programming
+	languages but appear in no real-world programming language.  
+	While such exercises can be very valuable, in practice
+	computer programmers are not isolated from their machines.
+	Software is written
+	to be used on real computer systems.  Computing professionals known as
+	<emphasis>software engineers</emphasis> develop software to drive particular systems.
+	These systems are defined by their underlying hardware and operating
+	system.  Developers use concrete tools like compilers, debuggers, and
+	profilers.  This chapter examines the context of software development,
+	including computer systems and tools.
+	</para>
+
+<section><title>Software</title>
+
+	<para>
+	A computer program is an example of computer
+	<indexterm><primary>software</primary></indexterm><emphasis>software</emphasis>.  One can
+	refer to a program as a piece of software as if it were a
+	tangible object, but software is actually quite intangible.  It is stored 
+	on a <indexterm><primary>medium</primary></indexterm><emphasis>medium</emphasis>.  A hard drive, a CD, a DVD, 
+	and a USB pen drive are all examples of media upon which software can 
+	reside.  The CD is not the software; the software is a pattern on
+	the CD.  In order to be used software must be stored in the computer's 
+	memory.  Typically computer programs are loaded into memory from a medium like 
+	the computer's hard disk.  An electromagnetic pattern representing the
+	program is stored on
+	the computer's hard drive.  This pattern of electronic symbols
+	must be transferred to the computer's memory before the
+	program can be executed.  The program may have been installed 
+	on the hard disk from a CD or from the Internet.  
+	In any case, the essence that was
+	transferred from medium to medium was a pattern of electronic symbols
+	that direct the work of the computer system.
+	</para>
+
+	<para>
+	These patterns of electronic symbols are best represented as a
+	sequence of zeroes and ones, digits from the binary (base 2) number
+	system:
+	<blockquote>
+	<para>
+	...10001011011000010001000001001110...
+	</para>
+	</blockquote>
+	</para>
+
+	<para>
+	To the underlying computer hardware, specifically the processor, a
+	zero here and three ones there might mean that certain electrical 
+	signals should be
+	sent to the graphics device so that a paricular point on the screen 
+	will be colored red.  
+	Unfortunately, only a miniscule number of people in the world, if
+	anyone,
+	would be able to produce, by hand, the complete sequence of zeroes and 
+	ones that
+	represent the program Microsoft Word for an Intel-based computer
+	running Microsoft Windows.  Further,
+	almost none of those who could produce the binary sequence would claim to 
+	enjoy the task.  The Word program for Mac OS X computers using a
+	PowerPC processor
+	works similarly to the Windows version
+	and indeed is produced by the same
+	company, but the program is expressed in a completely different 
+	sequence of zeroes and
+	ones!  The Intel Pentium processor in the Windows machine accepts a
+	completely different binary language than the PowerPC processor in the
+	Mac.  We say the processors have their own <indexterm><primary>machine language</primary></indexterm><emphasis>machine language</emphasis>.
+	</para>
+
+</section>
+
+
+<section><title>Development Tools</title>
+
+	<para>
+	If very few humans can (or want) to speak the machine language of the
+	computers' processors and software is expressed in this language, how has so
+	much software been developed over the years?  
+	</para>
+
+
+	<para>
+	Software can be represented by printed words and symbols that for
+	humans are
+	easier to manage than binary sequences.  
+	Tools exist that convert a higher-level
+	description of what is to be done into the required lower-level code.
+	Higher-level programming languages like Java , \Cpp, C\#,  FORTRAN, COBOL, and
+	Perl 
+	allow programmers to express solutions to programming problems in
+	terms that are much closer to a natural language like English.
+	Most programmers today, especially those concerned with high-level
+	applications, do not usually worry about the details of underlying
+	hardware platform and its machine language.
+	</para>
+
+
+	<para>
+	One might think that ideally a tool would accept a description in a
+	natural language, such as English, and produce the desired executable
+	code.  This is not possible today because natural languages are quite 
+	complex compared to computer programming languages.  Programs called
+	<indexterm><primary>compilers</primary></indexterm><emphasis>compiler</emphasis> that readily translate one computer
+	language into another have been around for over 50 years, but 
+	natural language recognition is still an active area of artificial 
+	intelligence research.  Natural languages, as they are used by most 
+	humans, are inherently ambiguous.  To properly understand all but a very
+	limited subset of a natural language, a human (or artificially
+	intelligent computer system) requires a vast amount of background
+	knowledge that is beyond the capabilities of today's software.
+	Fortunately, programming languages provide a relatively simple structure
+	with very strict rules for forming statements that can express a solution
+	to any program that can be solved by a computer.
+	</para>
+
+	<para>
+	Consider the following program fragment, written in the C++ programming
+	language:
+	\begin{verbatim}
+	   subtotal = 25;
+	   tax = 3;
+	   total = subtotal + tax;
+	\end{verbatim}
+	The statements in this program fragment look similar to expressions in
+	algebra.  
+	%There is no indication of memory references or machine
+	%registers.  
+	We see no sequence of binary digits.
+	Three words, 
+	@subtotal@, @tax@, and @total@, called
+	<indexterm><primary>variables</primary></indexterm><emphasis>variables</emphasis>,
+	are used to hold information % instead  
+	(\seesection{sec:variables_and_assignment}).
+	Variables have been used in 
+	mathematics for hundreds of years before the first digital computer was
+	built.  In programming, a variable represents a value stored in the
+	computer's memory.  Familiar operators (@=@ and @+@) are used instead of some
+	cryptic binary digit sequence that instructs the processor to perform
+	the operation.  
+	Since this program is expressed
+	in the C language, not machine language, it cannot be executed directly
+	on any processor.  A program called a 
+	<indexterm><primary>compiler</primary></indexterm><emphasis>compiler</emphasis>
+	translates the C code to machine code.  The typical development cycle for
+	higher-level programming languages is shown in 
+	Figure~\ref{fig:normaldevelcycle}.
+	</para>
+
+	<para>
+	<figure>
+	<title>Computer Architecture</title>
+	<mediaobject>
+	<imageobject> <imagedata fileref="../figures/smiley.png" 
+                                 format="PNG" align="center" scale="50" scalefit="1"/></imageobject>
+	<imageobject> <imagedata fileref="figures/smiley.eps" 
+                                 format="EPS" align="center" scale="50" scalefit="1"/></imageobject>
+	</mediaobject>
+	</figure>
+	</para>
+
+	<para>
+	The higher-level language code is called 
+	<indexterm><primary>source code</primary></indexterm><emphasis>source code</emphasis>.  
+	The compiled machine language code is called
+	the <emphasis>target code</emphasis>.  
+	</para>
+
+	<para>
+	The beauty of higher-level languages is that the same C source code can
+	be compiled to different target platforms and execute identically.  
+	The only requirement is that the target platform has a C compiler
+	available.  So, a program can be developed on one system and then
+	recompiled for another system.
+	The
+	compiled code will be very different on the various platforms since the
+	machine architecture varies. % (different register sets, processor instructions, etc.).  
+	Importantly, the human programmer thinks about writing the solution to
+	a problem in C, not in a specific machine language.
+	</para>
+
+
+
+	<para>
+	For true compatibility, the program to be transported to multiple
+	platforms should not exploit any
+	feature unique to any target platform; for example, graphical windows behave
+	differently and have different capabilities under different window
+	managers (for example, the Windows Vista graphical environment is 
+	different from the 
+	Unix/Linux X windows environment and Mac OS X environment).  
+	In practice, programs are often 
+	decomposed into platform
+	<emphasis>dependent</emphasis> parts and platform <emphasis>independent</emphasis> parts.  The
+	platform independent parts capture the core functionality or purpose 
+	of the software
+	(sometimes called the <emphasis>business logic</emphasis>).  For example, all
+	spreadsheets have some things in common (cells, formatting,
+	calculation, etc.), regardless of the platform upon
+	which they run.  The platform dependent parts of the program take care of
+	the unique user interface or file structure of the target platform.
+	Porting the application to another platform concentrates on
+	modifying only the
+	platform dependent parts of the software.
+	</para>
+
+	<para>
+	The ability to develop a program once and deploy
+	it easily on other platforms is very attractive to developers since
+	software development is an expensive and time-consuming task.
+	\seesection{sec:java_devel} shows how Java provides a new 
+	dimension to software portability.
+	</para>
+
+	<para>
+	As mentioned above, computer programs can be written in the
+	absence of actual computers on which to run them.  They can be expressed
+	in abstract mathematical notation and be subjected to mathematical proofs
+	and analysis
+	that verify their correctness and execution efficiency.  Some advantages
+	of this mathematical approach include:
+	<itemizedlist>
+		<listitem><para> <phrase>Platform independence</phrase>.  
+                      Since the program is not
+		      expressed in a "real" programming language for execution
+		      on a ``real'' computer system, the  programmer is not
+		      constrained by limitations imposed by the operating system or
+		      idiosyncrasies of the programming language.</para></listitem>
+		<listitem><para> <phrase>Avoids the limitations of testing</phrase>.  
+                      Testing cannot
+		      prove the absence of errors; it can only demonstrate the
+		      presence of errors.  Mathematical proofs, when done
+		      correctly, are not misled by testing traps such as:
+			<itemizedlist>
+				<listitem> <para>Coincidental correctness&mdash;as 
+                                a simple example,
+				consider the expression $x+y$.  If the programmer 
+                                accidentally
+				uses
+				multiplication instead of addition and values $x=2$ and
+				$y=2$ are used to check, then the program appears to
+				evaluate this expression correctly, since both $2+2=4$
+				and $2\times2=4$. </para> </listitem>
+				<listitem><para> Poor coverage&mdash;in complex 
+                                programs, certain parts
+				of a program may be executed only under unusual
+				conditions.  Often these unusual conditions elude
+				testing, and lurking errors appear only after the
+				software is deployed.</para></listitem>
+			</itemizedlist>
+			</para>
+		</listitem>
+	</itemizedlist>
+	</para>
+
+
+	<para>
+	Unlike
+	pure mathematicians, most programmers
+	do not often use formal mathematical reasoning techniques as
+	they write programs.  Some argue, with a strong case, that this lack of
+	formality leads to poor-quality software.  However, capable programmers 
+	employ techniques that are often far less formal but highly effective in
+	producing high-quality software.  These informal techniques and notions 
+	often map directly to their more abstract mathematical counterparts.  Some
+	circumstances, such as the development of critical software systems
+	concerning safety, privacy, or financial affairs, may warrant a more
+	formal approach.  
+	</para>
+
+	<para>
+	Programmers have a variety of concrete tools available to enhance the software
+	development process.  Some common tools include:
+	<itemizedlist>
+		<listitem> <para><phrase>Editors</phrase>.  
+		      An <indexterm><primary>editor</primary></indexterm><emphasis>editor</emphasis> 
+		      allows the user to 
+		      enter the program 
+		      source code and save it to files.  Most programming 
+		      editors increase programmer productivity by using colors
+		      to highlight language features.  Some syntax-aware 
+		      editors can use
+		      colors or other special annotations to alert 
+		      programmers of syntax errors before the
+		      program is compiled.</para></listitem>
+		<listitem> <para><phrase>Compilers</phrase>.  
+		      A <indexterm><primary>compiler</primary></indexterm><emphasis>compiler</emphasis> 
+		      translates the source code to target
+		      code.  The target code may be machine language for a
+		      particular platform, another source language, or, as in the
+		      case of Java,
+		      instructions for a <emphasis>virtual machine</emphasis> 
+		      (\seesection{sec:java_devel}).</para></listitem>
+		<listitem> <para><phrase>Debuggers</phrase>. 
+		      A <indexterm><primary>debugger</primary></indexterm><emphasis>debugger</emphasis> 
+		      allows programmers to simultaneously
+		      run a program and see which source code line is
+		      currently being executed.  The values of variables and
+		      other program elements can be watched to see if their
+		      values change as expected.  Debuggers  are valuable for
+		      locating errors (also called <emphasis>bugs</emphasis>) 
+		      and 
+		      repairing programs that contain errors.
+		      (See \seesection{sec:errors} for more
+		      information about programming errors.)</para></listitem>
+		<listitem> <para><phrase>Profilers</phrase>.  
+		      A <indexterm><primary>profiler</primary></indexterm><emphasis>profiler</emphasis> 
+		      is used to evaluate a program's
+		      performance.  It indicates how many times a portion of a
+		      program is executed during a particular run, and how long
+		      that portion takes to execute.  Profilers also are used for
+		      testing purposes to ensure all the code in a program 
+		      is actually being used somewhere during testing.  (This is
+		      known as <indexterm><primary>coverage</primary></indexterm><emphasis>coverage</emphasis>.  
+		      It is common for software to fail after its release because users
+		      exercise some part of the program that was not executed
+		      anytime during testing.)</para></listitem>
+	</itemizedlist>
+	</para>
+
+	<para>
+	Many developers use integrated development environments (IDEs).  An
+	IDE includes editors, debuggers, and other programming aids in one
+	comprehensive program.  Examples of IDEs include <emphasis>Eclipse</emphasis>, 
+	Microsoft's <emphasis>Visual Studio</emphasis>, <emphasis>NetBeans</emphasis>, and
+	<emphasis>DrJava</emphasis>.
+	</para>
+
+	<para>
+	Despite the plethora of tools (and tool vendors' claims), the programming
+	process for all but trivial programs is not automatic.  Good tools are
+	valuable and certainly increase the productivity of developers, but they
+	cannot write software.  There are no substitutes for sound logical thinking,
+	creativity, common sense, and, of course, programming experience.  
+	</para>
+
+</section>
+
+
+</chapter>
+
+
+

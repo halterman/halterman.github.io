@@ -1,0 +1,59 @@
+<html>
+    <head>
+		<link rel="SHORTCUT ICON" href="favicon.ico">
+	    <title>
+		    SGL: Simple Graphics Library
+	    </title>
+            <style type="text/css">
+                body {
+                   background:
+                   url("../figures/titlepagebackgroundwithcode.png")
+                               50% 50% no-repeat;
+                   font-family:Arial,Verdana,Sans-serif;
+                   color:#ffffff;
+                   align: right;
+                }
+                h1 {
+                   color:#ffffff;
+                   font-family:Arial,Verdana,Sans-serif;
+                   font-size:300%;
+                } /*  White text */
+                h3 {
+                   color:#ffffff;
+                   font-family:Arial,Verdana,Sans-serif;
+                   font-size:100%;
+                } /*  White text */
+                a:link {
+                    color: yellow 
+                }
+                a:visited {
+                    color: yellow 
+                }
+                
+            </style>
+    </head>
+    <body>
+        <div id="content" align="right">
+        <!--
+        <img src="../figures/titlepagebackgroundwithcode.png" alt="title page image"></a>
+        -->
+        <p>
+        <h1>SGL<br>
+            Simple Graphics Library</h1>
+        <p>
+        <h2>Version 0.3</h2>
+        <p>
+        <p>
+        <p>
+        <h3>Richard L. Halterman<br>
+            Southern Adventist University<br>
+            School of Computing</h3>
+        <p>
+        September 23, 2009
+        <p>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">Fundamentals of C++ Programming</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">RIchard L. Halterman</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons Attribution-Share Alike 3.0 United States License</a>.
+        <p>
+        <a href="bk01-toc.html">Table of Contents</a>
+	</div>
+    </body>
+</html>

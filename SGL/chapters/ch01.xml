@@ -1,0 +1,183 @@
+<chapter><title>Computer Basics</title>
+
+
+	<para>
+	A computer is a complex system.  Like other complex
+	systems such as the human body or the US government, it
+	is composed of smaller systems and components.	Computer
+	systems are made up of two major systems--hardware and
+	software.  Each component is useless without the other.
+	This course is concerned primarily with a particular kind
+	of software development--applications programming.  It is,
+	however, impractical to discuss software development with
+	no knowledge of the hardware involved.	In fact, since
+	we will be writing programs and running these programs
+	on actual machines, some knowledge of the hardware
+	system is essential.  The <emphasis>next</emphasis> 
+	section is an <emphasis role="strong">overview</emphasis> of
+	computer hardware.  It is far from comprehensive; in fact,
+	it is merely enough to get us started.	More information
+	on the hardware side of things will be provided later
+	as the need arises.  
+	</para>
+
+
+<section><title>Computer Hardware</title>
+
+	<para>
+	Hardware comprises the parts of the computer which can
+	actually be seen and touched.  The integrated circuits
+	(chips), circuit boards, cables, keyboards, monitors,
+	disk drives, etc. are all part of the hardware system.
+	At the heart of the hardware is the microprocessor.
+	Refer to Figure 0.1.0.	
+	</para>
+
+	<para>
+	The microprocessor, or processor, is a chip (integrated
+	circuit) that is the "brain" of the computer.
+	The processor controls most of the other hardware.
+	The processor is responsible for moving data around
+	from one part of the system to another, performing
+	calculations on the data, and otherwise comparing and
+	modifying the data.  (Consider data here to mean some
+	"chunks" of information.)  The processor contains the
+	arithmetic-logic unit (ALU) that performs calculations
+	and comparisons and the control unit (CU) that sends
+	signals to other parts of the hardware system controlling
+	their function.  The processor also contains a small
+	number of registers that are used to temporarily store
+	data for calculations.	The software that we create
+	will be translated into instructions for the processor.
+	In reality, the programs we write control the computer
+	by controlling the processor.
+	</para>
+
+	<para>
+	The processor is connected to the other primary hardware components
+	through a link known as the bus.  At the simplest level, the bus is
+	merely a bunch of parallel wires running between the processor, memory,
+	input devices, and output devices. Data is passed from an input device to
+	the processor through the bus.	You can think of the bus as an interstate
+	highway system.  Devices are connected to the highway by on and off ramps,
+	or "exits."  Data can get from one component to another by getting on
+	and off at the correct exits.
+	</para>
+
+	<para>
+	Memory, sometimes called main memory or RAM (random access memory),
+	is where data are stored.  The programs that we write (translated into
+	processor instructions) are also stored in memory.  Memory is simply
+	a large storage area for data and machine instructions.  A computer
+	does all of its magic by performing some ridiculously simple steps over
+	and over.  The processor fetches an instruction from memory.  Based on
+	the particular instruction, it is likely to grab a piece of datum from
+	memory, do something to that datum element, and place it back somewhere
+	(possibly the same place) in memory.  This is called the "fetch-execute
+	cycle" because the processor fetches an instruction from memory and then
+	executes that instruction.  The instructions that the processor fetches
+	constitute the computer's software (see section 0.2 below).
+	</para>
+
+	<para>
+	Input and output (I/O) devices are responsible for putting data into
+	memory or retrieving data from memory.  The keyboard is one example
+	of an input device.  When you use a word processor or text editor,
+	the letters you type appear on the screen but also are stored in a
+	particular place in the computer's memory.  The screen is a type of
+	output device.  What is visible on the screen corresponds in some way to
+	data stored in memory.  Disk drives allow information to be both stored
+	in and retrieved from memory.  The diskette and fixed disk (hard disk)
+	are also known as secondary memory or secondary storage.  Data can be
+	stored on a diskette as in the computer's main memory.  However, the
+	data in main memory are lost when the power is removed to the computer.
+	Data on diskette remain until erased or overwritten.  Other I/O devices
+	include mice, printers, trackballs, joysticks, etc.
+	</para>
+
+</section>
+
+
+<section><title>Software</title>
+
+	<para>
+	As mentioned above, software controls the processor, which in turn
+	controls the rest of the computer system.  Without hardware, obviously,
+	you could not have a computer; however, without software, you would
+	have a computer that could do nothing.  The processor would be unable
+	to communicate with memory or I/O devices.
+	</para>
+
+	<para>
+	Software can be categorized as systems software and applications
+	software.  An operating system (OS) is a sophisticated piece of systems
+	software that oversees the whole computer system.  On a personal computer,
+	DOS (Disk Operating System) is the OS most often used.  UNIX and the
+	Macintosh OS are other popular OSs.  The OS directs the processor's
+	communication with the other hardware components.  It is the platform
+	from which the other type of software, applications software (programs),
+	may be executed.
+	</para>
+
+	<para>
+	To better understand how systems software and the OS work, consider
+	what happens when the computer is turned on.  Recall that the hardware
+	can do nothing without software; all the processor can do is "fetch
+	and execute."  Upon power-up, the processor is in a reset condition;
+	it immediately looks to a particular place in memory for an instruction
+	to execute.  It is built to look in a part of memory known as ROM
+	(read-only memory).  ROM is a small part of memory with two special
+	characteristics--it cannot be modified (unlike the memory mentioned
+	above, RAM, where data and programs are stored), and it is not erased
+	when the power is off (otherwise the computer could not start itself up
+	the next time!).  The ROM contains the instructions for the processor
+	to check the other hardware (memory, I/O devices, etc.) and load the OS
+	into memory from disk.  Once the OS is in memory, the processor follows
+	the instructions dictated by the OS.  On a PC under DOS, this same start
+	up sequence occurs but may look different on the screens of computers
+	from different manufacturers since different start up ROMs may be used
+	(Phoenix, Award, AMI, and others all make ROM-BIOS memories for PC
+	compatibles).  A DOS program called COMMAND.COM (among others) is loaded
+	into memory.  The job of COMMAND.COM is to interpret commands typed in
+	from the keyboard.  More information on using DOS will be provided later.
+	</para>
+
+	<para>
+	Applications software consists of the programs that take advantage of
+	the hardware and OS facilities.  Some well-known applications software
+	include WordPerfect, Lotus 1-2-3, dBASE, Tetris, Flight Simulator, Turbo
+	C++, and just about every program you can think of.  The C++ programs
+	that you create in this class are examples of applications software.
+	Applications programs are typically easier to write than systems programs.
+	Typically, the programmer need not worry about the details of how to
+	access the I/O devices or memory.  Programs are written that correspond to
+	some real world problem such as balancing a checkbook or simulating a game
+	of tennis.  The computer is simply a medium for solving these problems.
+	</para>
+
+	<programlisting><![CDATA[
+ #include <iostream>
+ #include <cstdio>
+
+ using namespace std;
+
+ int main() {
+     int val1, val2;
+     printf("Enter values to test <Q> quits.\n");
+     while ( scanf("%d%d", &val1, &val2) == 2 )
+         if ( val1 < 1000 )
+             printf("The LCM of %d and %d id %d.\n",
+                    val1, val2, least_common_multiple(val1, val2));
+     cout << "*** This works! << endl;
+     return 0;
+ }
+	]]></programlisting>
+
+	<para>
+	The element <varname>val1</varname> is a variable in the
+	program named <filename>prog1.cpp</filename>.
+	</para>
+
+</section>
+
+</chapter>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.3. SGL Application Architecture</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with SGL" /><link rel="prev" href="ch03s02.html" title="3.2. Event-driven Programming" /><link rel="next" href="ch03s04.html" title="3.4. SGL Coordinate System" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.applicationarchitecture"></a>3.3. SGL Application Architecture</h2></div></div></div><p>
+All the Simple Graphics Library code lives in the 
+<code class="varname">sgl.hpp</code> header file.  You must
+<code class="varname">#include</code> the  
+<code class="varname">sgl.hpp</code> header in exactly one C++ source file 
+in your SGL-based
+project.  For single source file projects, simply include the line
+</p><pre class="screen">
+ #include &lt;GL/sgl.hpp&gt;
+</pre><p>
+at the top of your source with the rest of the 
+<code class="varname">#include</code> directives.  This
+<code class="varname">sgl.hpp</code> file itself 
+<code class="varname">#include</code>s the file 
+<code class="varname">sgl.h</code>.  
+</p><p>
+For projects that consist of multiple source files, every source
+file that involves SGL code must
+<code class="varname">#include</code>s the file 
+<code class="varname">sgl.h</code>—with one exception; exactly one
+source file must instead 
+<code class="varname">#include</code> the 
+<code class="varname">sgl.hpp</code> header file. 
+These two header 
+files play different roles:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+   <code class="varname">sgl.h</code> contains the 
+   <span class="emphasis"><em>declarations</em></span> of all
+   the constants, functions, and classes in the SGL.
+   If a source file within project uses an
+   SGL constant, function, or class, it must 
+   <code class="varname">#include</code> the
+   <code class="varname">sgl.h</code> header.  The exception 
+   is that exactly one file in the project must instead 
+   <code class="varname">#include</code> the
+   <code class="varname">sgl.hpp</code> header file.
+   </p></li><li class="listitem"><p>
+   <code class="varname">sgl.hpp</code> contains the 
+   <span class="emphasis"><em>definitions</em></span>, or
+   <span class="emphasis"><em>implementations</em></span>, of all
+   the functions and classes in the SGL.  
+   The <code class="varname">sgl.hpp</code> file  itself
+   <code class="varname">#include</code>s the file 
+   <code class="varname">sgl.h</code> file.
+   Exactly one source file in an SGL based application must
+   <code class="varname">#include</code> the
+   <code class="varname">sgl.hpp</code> header file.
+   </p></li></ul></div><p>
+In multiple source file C++ projects, the compiler processes 
+each source file separately and independently producing one machine 
+language
+object file for each source file.  The linker then combines the
+machine language code from all the object files into a single
+executable file.
+Since the <code class="varname">sgl.hpp</code> header file contains
+implementations of all the SGL functions and classes, if more than
+one source file in a project attempts to 
+<code class="varname">#include</code> the
+<code class="varname">sgl.hpp</code> header file, linker will detect the muliple
+definitions for identical fuctions and methods and issue an error.  
+That is why programmers must 
+<code class="varname">#include</code> the
+<code class="varname">sgl.hpp</code> header file in one and only file in
+a project.
+</p><p>
+All SGL programs consist of at least one graphical window.  The
+window provides output to the user, typically with graphical
+images.  The window also is capable of receiving user input events
+from the mouse and keyboard.  The application's window is
+an instance of a class derived from
+<code class="varname">sgl::Window</code>:
+</p><pre class="screen">
+ #include &lt;GL/sgl.hpp&gt;
+
+ class MyAppWindow: public sgl::Window {
+     /* 
+      *  Provide application-specific data and
+      *  override virtual functions for handling
+      *  events.
+      */
+ };
+</pre><p>
+The classes and global constants in SGL are part of the
+<code class="varname">sgl</code> namespace, so the above code could be
+written instead as
+</p><pre class="screen">
+ #include &lt;GL/sgl.hpp&gt;
+
+ using namespace sgl;
+
+ class MyAppWindow: public Window {
+     /* . . . */ 
+ };
+</pre><p>
+The <code class="varname">using namespace sgl;</code> directive exposes 
+everything from SGL to the client code.  Another
+approach that eliminates the requirement of the
+<code class="varname">sgl::</code> prefix but does expose all the SGL
+identifiers is shown here:
+</p><pre class="screen">
+ #include &lt;GL/sgl.hpp&gt;
+
+ using sgl::Window;
+
+ class MyAppWindow: public Window {
+     /* . . . */
+ };
+</pre><p>
+</p><p>
+The <code class="varname">sgl::Window</code> class is an abstract class
+because its <code class="varname">paint</code> method is pure virtual.  It is the
+responsibilty of the <code class="varname">paint</code>
+method to draw the contents of the window.  The programmer does not
+call <code class="varname">paint</code> directly; the event manager of the 
+SGL framework code
+calls a window object's <code class="varname">paint</code> method when the
+window needs to be displayed; for example, when the window
+first appears or
+when the user resizes an existing window.  
+A programmer can request explicitly that the
+framework redraw the window by calling the window's
+<code class="varname">repaint</code> method.  The SGL framework reacts to
+this <code class="varname">repaint</code> call by queuing a window repaint
+event.  The event manager in turn processes the repaint event 
+by calling
+the affected window object's <code class="varname">paint</code> method.
+</p><p>
+The <code class="varname">Window</code> class has other methods that the
+SGL framework calls to handle specific events:
+</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+   <code class="varname">mouse_pressed</code> is called when the user depresses
+   a mouse button when the pointer is over the window
+   </p></li><li class="listitem"><p>
+   <code class="varname">mouse_released</code> is called when the user
+   releases ("unpresses")
+   a mouse button when the pointer is over the window,
+   </p></li><li class="listitem"><p>
+   <code class="varname">mouse_moved</code> is called when the user moves the
+   mouse pointer within the window without holding down a mouse
+   button,
+   </p></li><li class="listitem"><p>
+   <code class="varname">mouse_dragged</code> is called when the user moves the
+   mouse pointer within the window while holding down a mouse
+   button, and
+   </p></li><li class="listitem"><p>
+   <code class="varname">key_pressed</code> is called when the user types 
+   a key when the window has focus.
+   </p></li></ul></div><p>
+Each of these input events have empty concrete implementations in the
+<code class="varname">Window</code> class.  This means if a derived class
+does not override one of these methods, an instance of the derived
+class will effectively ignore any events of that type sent by the
+framework.
+</p><p>
+Historical note: Initial implementations of SGL were more Java-like, using
+<code class="varname">MouseEvent</code> and
+<code class="varname">KeyEvent</code> objects.  These early implementations, 
+however,
+simply took the parameters passed by GLUT (such as the
+<code class="varname">x</code>, <code class="varname">y</code>, and 
+<code class="varname">button</code> parameters for a mouse event), wrapped
+them within an object, and then forwarded that object to the
+appropriate window method.  Since the window method 
+ultimately had to extract the parameters from the object it
+received in order to use them,
+the overhead of using event objects was abandoned for the simpler
+approach of passing the individual primitive parameters.
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2. Event-driven Programming </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.4. SGL Coordinate System</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+	This work is licensed under a 
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+        Creative Commons License</a>.
+	</div></body></html>

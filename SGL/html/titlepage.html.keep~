@@ -1,0 +1,58 @@
+<html>
+    <head>
+		<link rel="SHORTCUT ICON" href="favicon.ico">
+	    <title>
+		    SGL: Simple Graphics Library
+	    </title>
+            <style type="text/css">
+                body {
+                   background:
+                   url("../figures/titlepagebackgroundwithcode.png")
+                               50% 50% no-repeat;
+                   font-family:Arial,Verdana,Sans-serif;
+                   color:#ffffff;
+                   align: right;
+                }
+                h1 {
+                   color:#ffffff;
+                   font-family:Arial,Verdana,Sans-serif;
+                   font-size:300%;
+                } /*  White text */
+                h3 {
+                   color:#ffffff;
+                   font-family:Arial,Verdana,Sans-serif;
+                   font-size:100%;
+                } /*  White text */
+                a:link {
+                    color: yellow 
+                }
+                a:visited {
+                    color: yellow 
+                }
+                
+            </style>
+    </head>
+    <body>
+        <div id="content" align="right">
+        <!--
+        <img src="../figures/titlepagebackgroundwithcode.png" alt="title page image"></a>
+        -->
+        <p>
+        <h1>SGL<br>
+            Simple Graphics Library</h1>
+        <p>
+        <h2>Version 0.3</h2>
+        <p>
+        <p>
+        <p>
+        <h3>Richard L. Halterman<br>
+            Southern Adventist University<br>
+            School of Computing</h3>
+        <p>
+        DATESTAMP
+        <p>
+        <p>
+        <a href="bk01-toc.html">Table of Contents</a>
+	</div>
+    </body>
+</html>

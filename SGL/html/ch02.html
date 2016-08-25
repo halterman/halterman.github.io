@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Chapter 2. Installing SGL</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="index.html" title="SGL: Simple Graphics Library" /><link rel="prev" href="ch01s03.html" title="1.3. SGL License" /><link rel="next" href="ch02s02.html" title="2.2. Installing on Apple Mac OS X" /></head><body><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="ch:installing"></a>Chapter 2. Installing SGL</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl><dt><span class="sect1"><a href="ch02.html#sec:installing.windows">2.1. Installing on Microsoft Windows XP, Vista, Windows 7, or
+Windows 8.1 with 
+Visual Studio 2013</a></span></dt><dt><span class="sect1"><a href="ch02s02.html">2.2. Installing on Apple Mac OS X</a></span></dt><dt><span class="sect1"><a href="ch02s03.html">2.3. Installing on Linux</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+The SGL library is relatively simple to install on all the 
+major platforms: Microsoft Windows, Apple Mac OS X, and Linux.
+</p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:installing.windows"></a>2.1. Installing on Microsoft Windows XP, Vista, Windows 7, or
+Windows 8.1 with 
+Visual Studio 2013</h2></div></div></div><p>
+Visual Studio 2013 includes the OpenGL library, but it lacks 
+<a id="idp8722663648" class="indexterm"></a>
+GLUT.
+The GLUT library is available from 
+<a class="ulink" href="http://www.xmission.com/~nate/glut.html" target="_top">
+<em class="citetitle">http://www.xmission.com/~nate/glut.html</em></a>.
+The zip file downloadable from this site contains the Windows
+binaries.  The SGL library is available from 
+<a class="ulink" href="http://python.cs.southern.edu/SGL" target="_top">
+<em class="citetitle">http://python.cs.southern.edu/SGL</em></a>.
+After unpacking all the files, you must copy the files to various
+folders within Visual Studio.   Administrator privileges are
+required.  The following instructions assume Visual Studio is
+installed in the default location,
+<code class="varname">C:\Program Files (x86)\Microsoft Visual Studio 12.0</code>.
+Adjust the instructions accordingly if Visual Studio is installed
+elsewhere.
+</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+   Create a new folder named <code class="varname">GL</code>:
+   <code class="varname">C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\GL</code>.
+   The security on the folder should be set so anyone can 
+   read its contents.
+   </p></li><li class="listitem"><p>
+   Copy the files <code class="varname">glut.h</code>, <code class="varname">sgl.hpp</code> 
+   and <code class="varname">sgl.h</code> to the 
+   <code class="varname">C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\GL</code>
+   folder.  These files should be readable by everyone.
+   </p></li><li class="listitem"><p>
+   Copy the file <code class="varname">glut32.lib</code> to the
+   <code class="varname">C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib</code>
+   folder and ensure all can read it.
+   </p></li><li class="listitem"><p>
+   Copy the file <code class="varname">glut32.dll</code> to the
+   <code class="varname">C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin</code>
+   folder and ensure all can read it.
+   </p></li><li class="listitem"><p>
+   Log out as administrator and log in as a normal user.  You
+   should be able to start
+   Visual Studio and create, build, and execute an SGL program
+   without tinkering with any project settings.
+   </p></li></ol></div><p>
+</p></div></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. SGL License </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 2.2. Installing on Apple Mac OS X</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+	This work is licensed under a 
+        <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+        Creative Commons License</a>.
+	</div></body></html>

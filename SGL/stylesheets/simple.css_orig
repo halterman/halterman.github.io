@@ -1,0 +1,4 @@
+pre.programlisting {
+	background-color: #FFFFAA ;
+	border: 1px solid #006600 ;
+}
