@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classsgl_1_1GraphicalObject.html" title="sgl::GraphicalObject" alt="" coords="5,132,145,159"/>
+<area shape="rect" id="node2" href="$classsgl_1_1BitmapObject.html" title="sgl::BitmapObject" alt="" coords="204,5,331,32"/>
+<area shape="rect" id="node3" href="$classsgl_1_1CompositeObject.html" title="sgl::CompositeObject" alt="" coords="193,56,341,83"/>
+<area shape="rect" id="node4" href="$classsgl_1_1DisplayDigit.html" title="sgl::DisplayDigit" alt="" coords="208,107,327,133"/>
+<area shape="rect" id="node5" href="$classsgl_1_1DoubleDigit.html" title="sgl::DoubleDigit" alt="" coords="210,157,325,184"/>
+<area shape="rect" id="node6" href="$classsgl_1_1Multidigit.html" title="sgl::Multidigit" alt="" coords="218,208,317,235"/>
+<area shape="rect" id="node7" href="$classsgl_1_1TimeDisplay.html" title="sgl::TimeDisplay" alt="" coords="207,259,327,285"/>
+</map>

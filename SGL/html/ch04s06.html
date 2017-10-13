@@ -14,22 +14,18 @@ periodically changes its size and its color.
 #include &lt;fstream&gt;
 #include &lt;iostream&gt;
 
-using namespace sgl;
-using namespace std;
-
-
 struct Circle {
-    double x;     //  The location of the circle's center:
-    double y;     //  point (x,y)
-    double r;     //  The circle's radius
-    Color color;  //  The circle's color
+    double x;          //  The location of the circle's center:
+    double y;          //  point (x,y)
+    double r;          //  The circle's radius
+    sgl::Color color;  //  The circle's color
     //  Constructor requires location, radius, and color information
-    Circle(double x, double y, double r, const Color&amp; color) : x(x), y(y), r(r), color(color) {}
+    Circle(double x, double y, double r, const sgl::Color&amp; color) : x(x), y(y), r(r), color(color) {}
     void draw() {
-        set_color(color);
-        draw_circle(x, y, r + 1);
-        set_color(WHITE);
-        fill_circle(x, y, r);
+        sgl::set_color(color);
+        sgl::draw_circle(x, y, r + 1);
+        sgl::set_color(sgl::WHITE);
+        sgl::fill_circle(x, y, r);
     }
 };
 
@@ -37,71 +33,71 @@ struct Circle {
 //  A window that traces the movements of a circle
 //  on a random walk.  The trace leaves behind a multicolor
 //  tube-like structure of varying diameter
-class RandomCircleWindow : public Window {
-    double x;              //  Current position of the
-    double y;              //  circle's center: (x, y)
-    double z;              //  Circle's radius
+class RandomCircleWindow : public sgl::Window {
+    double x;                   //  Current position of the
+    double y;                   //  circle's center: (x, y)
+    double z;                   //  Circle's radius
 
-    int dx;                //  Change in x
-    int dy;                //  Change in y
-    double dz;             //  Change in radius
+    int dx;                     //  Change in x
+    int dy;                     //  Change in y
+    double dz;                  //  Change in radius
 
-    int run_x;             //  Length of run for dx
-    int run_y;             //  Length of run for dy
-    int run_z;             //  Length of run for radius change
+    int run_x;                  //  Length of run for dx
+    int run_y;                  //  Length of run for dy
+    int run_z;                  //  Length of run for radius change
 
-    bool animate;          //  Are we animating?
+    bool animate;               //  Are we animating?
 
-    vector&lt;Circle&gt; track;  //  Record of all the circle locations
+    std::vector&lt;Circle&gt; track;  //  Record of all the circle locations
 
-    Color current_color;   //  The current color for a circle 
+    sgl::Color current_color;   //  The current color for a circle 
     int color_run;
 
     //  Save the current locations to a text file
     void save() {
-        string filename;
-        cout &lt;&lt; "Enter file name: ";        //  Get file name from user
-        cin &gt;&gt; filename;
-        ofstream fout(filename);            //  Open file for writing, if possible
+        std::string filename;
+        std::cout &lt;&lt; "Enter file name: ";        //  Get file name from user
+        std::cin &gt;&gt; filename;
+        std::ofstream fout(filename);            //  Open file for writing, if possible
         if (fout.good()) {
-            fout &lt;&lt; track.size() &lt;&lt; endl;   //  Store number of circles
+            fout &lt;&lt; track.size() &lt;&lt; '\n';   //  Store number of circles
             //  Store each circle's component data about its location, size, and color
             for (auto&amp; circ : track)
                 fout &lt;&lt; circ.x &lt;&lt; ' ' &lt;&lt; circ.y &lt;&lt; ' ' &lt;&lt; circ.r &lt;&lt; ' '
                      &lt;&lt; circ.color.red &lt;&lt; ' ' &lt;&lt; circ.color.green &lt;&lt; ' ' 
-                     &lt;&lt; circ.color.blue &lt;&lt; endl;
+                     &lt;&lt; circ.color.blue &lt;&lt; '\n';
         }
         else
-            cout &lt;&lt; "Could not save the file" &lt;&lt; endl;
+            std::cout &lt;&lt; "Could not save the file" &lt;&lt; '\n';
     }
 
     //  Load circle locations from a text file
     void load() {
-        string filename;
-        cout &lt;&lt; "Enter file name: ";  //  Get file name from user
-        cin &gt;&gt; filename;
-        ifstream fin(filename);       //  Oprn the file for reading, if possible
+        std::string filename;
+        std::cout &lt;&lt; "Enter file name: ";  //  Get file name from user
+        std::cin &gt;&gt; filename;
+        std::ifstream fin(filename);       //  Oprn the file for reading, if possible
         if (fin.good()) {
             track.clear();            //  Empty the circle vector
             int size;
             fin &gt;&gt; size;              //  Read number of circles
             //  Obtain the location, size, and color information for each circle
             for (int i = 0; i &lt; size; i++) {
-                double x, y, z, red, green, blue;
-                fin &gt;&gt; x &gt;&gt; y &gt;&gt; z;
+                double in_x, in_y, in_z, red, green, blue;
+                fin &gt;&gt; in_x &gt;&gt; in_y &gt;&gt; in_z;
                 fin &gt;&gt; red &gt;&gt; green &gt;&gt; blue;
                 //  Add the circle to the collection of circles
-                track.push_back(Circle(x, y, z, Color(red, green, blue)));
+                track.push_back(Circle(in_x, in_y, in_z, sgl::Color(red, green, blue)));
             }
         }
         else
-            cout &lt;&lt; "Could not load the file" &lt;&lt; endl;
+            std::cout &lt;&lt; "Could not load the file" &lt;&lt; '\n';
 
     }
 public:
     //  Create a window of sufficient size
     RandomCircleWindow(double min_x, double max_x, double min_y, double max_y) :
-                         Window("Tubes", min_x, max_x, min_y, max_y),
+                         sgl::Window("Tubes", min_x, max_x, min_y, max_y),
                          x((min_x + max_x) / 2), y((min_y + max_y) / 2), z(10),
                          dx(0), dy(0), dz(0.01), run_x(0), run_y(0), run_z(0),
                          animate(true), current_color(0.9, 0.9, 0.9), color_run(0) {
@@ -114,14 +110,8 @@ public:
             circ.draw();
     }
 
-    ////  Do not erase image between repaints
-    //void prepaint() override {
-    //    glPushMatrix();
-    //    glColor3d(0.0, 0.2, 0.0);
-    //}
-
     //  Respond to user's key strokes
-    void key_pressed(int k, double x, double y) override {
+    void key_pressed(int k, double mouse_x, double mouse_y) override {
         if (animate)
             animate = false;
         else {
@@ -139,25 +129,25 @@ public:
                 load();
                 break;
         }
-        cout &lt;&lt; "# circles: " &lt;&lt; track.size() &lt;&lt; endl;
+        std::cout &lt;&lt; "# circles: " &lt;&lt; track.size() &lt;&lt; '\n';
         repaint();
-        Window::key_pressed(k, x, y);  //  Defer to base class for further processing
+        sgl::Window::key_pressed(k, mouse_x, mouse_y);  //  Defer to base class for further processing
     }
 
     void timer_expired() override {
         //  Determine if a run of each component has run its course
         //  and update if necessary
         if (run_x == 0) {
-            run_x = random(1, 100);  //  Determine length of next run for x
-            dx = random(-3, 3);      //  New x direction and speed
+            run_x = sgl::random(1, 100);  //  Determine length of next run for x
+            dx = sgl::random(-3, 3);      //  New x direction and speed
         }
         if (run_y == 0) {
-            run_y = random(1, 100);  //  Determine length of next run for y
-            dy = random(-3, 3);      //  New y direction and speed
+            run_y = sgl::random(1, 100);  //  Determine length of next run for y
+            dy = sgl::random(-3, 3);      //  New y direction and speed
         }
         if (run_z == 0) {
-            run_z = random(1, 100);  //  Determine length of next run for the radius
-            dz = 0.1* random(-3, 3); //  New radius
+            run_z = sgl::random(1, 100);  //  Determine length of next run for the radius
+            dz = 0.1* sgl::random(-3, 3); //  New radius
             //dz = 0.1;   //  Fixed radius
         }
         x += dx;   //  Update x
@@ -179,10 +169,10 @@ public:
         //  Determine if the color has run its course, and a new 
         //  color should be generated
         if (color_run == 0) {
-            color_run = random(100, 1000);  //  New run length
-            current_color.red = random(1, 1000) / 1000.0;    //  New red component
-            current_color.green = random(1, 1000) / 1000.0;  //  New green component
-            current_color.blue = random(1, 1000) / 1000.0;   //  New blue component
+            color_run = sgl::random(100, 1000);  //  New run length
+            current_color.red = sgl::random(1, 1000) / 1000.0;    //  New red component
+            current_color.green = sgl::random(1, 1000) / 1000.0;  //  New green component
+            current_color.blue = sgl::random(1, 1000) / 1000.0;   //  New blue component
         }
 
         color_run--;  //  Completed one more step of the run for this color
@@ -196,14 +186,14 @@ public:
 };
 
 int main() {
-    set_random_seed(42);   //  Set the random number generator seed
+    sgl::set_random_seed(42);   //  Set the random number generator seed
     //  Make and run a window for displaying the circles
-    make_shared&lt;RandomCircleWindow&gt;(0, 1900, 0, 1000)-&gt;run();
+    std::make_unique&lt;RandomCircleWindow&gt;(0, 1900, 0, 1000)-&gt;run();
 }
 </pre></div></div><p><br class="example-break" />
 The net effect of
 <a class="xref" href="ch04s06.html#prog:circlewalk.cpp" title="Example 4.4. Circle Random Walk">Example 4.4</a> 
-<a id="idp8722928528" class="indexterm"></a> is that it leaves 
+<a id="idp8685700832" class="indexterm"></a> is that it leaves 
 an image that looks resembles multicolored pipes flowing through a
 space. 
 <a class="xref" href="ch04s06.html#prog:circlewalk.cpp" title="Example 4.4. Circle Random Walk">Example 4.4</a> is responsible for 
@@ -214,8 +204,8 @@ title page of this document</a>.
 <a class="xref" href="ch04s06.html#fig:circlewalkwindow" title="Figure 4.5. Circle Random Walk">Figure 4.5</a> provides a screenshot of the
 one of the random walks.
 </p><div class="figure"><a id="fig:circlewalkwindow"></a><p class="title"><strong>Figure 4.5. Circle Random Walk</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/circlewalk.png" align="middle" width="534.6" alt="Circle Random Walk" /></div></div></div><p><br class="figure-break" />
-</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.5. Animation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.7. Calling OpenGL/GLUT Routines Directly</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 13, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s05.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s07.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.5. Animation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.7. Calling OpenGL/GLUT Routines Directly</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

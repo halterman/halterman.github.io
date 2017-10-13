@@ -1,0 +1,8 @@
+<map id="sgl::TimeDisplay" name="sgl::TimeDisplay">
+<area shape="rect" id="node2" href="$classsgl_1_1GraphicalObject.html" title="sgl::GraphicalObject" alt="" coords="124,183,264,209"/>
+<area shape="rect" id="node3" href="$classsgl_1_1ObjectWindow.html" title="sgl::ObjectWindow" alt="" coords="48,345,180,372"/>
+<area shape="rect" id="node4" href="$classsgl_1_1Window.html" title="sgl::Window" alt="" coords="5,183,100,209"/>
+<area shape="rect" id="node5" href="$classsgl_1_1SevenSegmentDigit.html" title="sgl::SevenSegmentDigit" alt="" coords="289,183,451,209"/>
+<area shape="rect" id="node6" href="$structsgl_1_1Point.html" title="sgl::Point" alt="" coords="279,5,357,32"/>
+<area shape="rect" id="node7" href="$classsgl_1_1Color.html" title="sgl::Color" alt="" coords="381,5,460,32"/>
+</map>

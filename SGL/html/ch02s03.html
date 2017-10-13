@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.3. Installing on Linux</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch02.html" title="Chapter 2. Installing SGL" /><link rel="prev" href="ch02s02.html" title="2.2. Installing on Apple Mac OS X" /><link rel="next" href="ch03.html" title="Chapter 3. Working with SGL" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:installing.linux"></a>2.3. Installing on Linux</h2></div></div></div><p>
-Before attempting to install SGL on a Linux system be sure that the
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>2.3. Installing on Linux</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch02.html" title="Chapter 2. Installing SGL" /><link rel="prev" href="ch02s02.html" title="2.2. Installing on Apple Mac OS X" /><link rel="next" href="ch03.html" title="Chapter 3. Working with the SGL" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:installing.linux"></a>2.3. Installing on Linux</h2></div></div></div><p>
+Before attempting to install the SGL on a Linux system be sure that the
 gcc development tools and GLUT library is in place.  Test a simple
 non-SGL program that uses GLUT to make sure it compiles and runs
 successfully.
@@ -20,20 +20,13 @@ successfully.
 </pre><p>
    </p></li></ol></div><p>
 </p><p>
-An SGL program named <code class="varname">my_prog.cpp</code> would be built
-as
+You can build an SGL program named <code class="varname">my_prog.cpp</code>
+with the following command:
 </p><pre class="synopsis">
   g++ -Wall -o my_prog my_prog.cpp -lglut -lGLU
 </pre><p>
-</p><p>
-As of this writing, the colors under Linux on the PowerPC platform
-may render incorrectly.  This is a known issue with OpenGL and X on the
-PowerPC; for
-example, see
-<a class="ulink" href="http://www.mail-archive.com/dri-devel@lists.sourceforge.net/msg42944.html" target="_top">
-<em class="citetitle">http://www.mail-archive.com/dri-devel@lists.sourceforge.net/msg42944.html</em></a>.
-</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2014 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.7.5</font></td><td width="40%" align="right"><font color="red">November  4, 2014</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. Installing on Apple Mac OS X </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> Chapter 3. Working with SGL</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 13, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch02s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch02.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.2. Installing on Apple Mac OS X </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> Chapter 3. Working with the SGL</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.
