@@ -6,7 +6,7 @@ major platforms: Microsoft Windows, Apple macOS, and Linux.
 </p></div><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:installing.windows"></a>2.1. Installing on Microsoft Windows 10
 with Visual Studio 2017</h2></div></div></div><p>
 Visual Studio 2017 includes the OpenGL library, but it lacks 
-<a id="idp8685432944" class="indexterm"></a>
+<a id="idp8685435488" class="indexterm"></a>
 GLUT.
 The GLUT library is available from 
 <a class="ulink" href="http://www.xmission.com/~nate/glut.html" target="_top">
@@ -34,6 +34,13 @@ SGL files:
              
              <code class="varname">C:\Windows</code> (you need administrator
              privileges for this step).
+Rather then adding <code class="varname">glut32.dll</code> to the <code class="varname">C:\Windows</code>
+directory, you also may copy the <code class="varname">glut32.dll</code> file to the same location as
+your <code class="varname">.cpp</code> source code in <span class="emphasis"><em>each and every</em></span> 
+Visual Studio project in which you use the SGL.  
+When executing the program under Visual Studio,
+the environment automatically will load the DLL.    If you instead place the DLL
+in the <code class="varname">C:\Windows</code> folder, this copying is unnecessary.
           </p></li></ol></div><p>
 
 When creating a new project in Visual Studio 2017, adjust the
@@ -41,17 +48,18 @@ project properties as follows:
 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>In the VC++ Directories section:
            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Add
                    <code class="varname">c:\SGL\include</code> to the
-                   <span style="color: red">&lt;b&gt;Include Directories&lt;/b&gt;</span> section, and
+                   <span class="emphasis"><em>Include Directories</em></span> section, and
                    </p></li><li class="listitem"><p>Add
                    <code class="varname">c:\SGL\lib</code> to the
-                   <span style="color: red">&lt;b&gt;Library Directories&lt;/b&gt;</span> section, and
+                   <span class="emphasis"><em>Library Directories</em></span> section, and
                    </p></li></ul></div><p>
-             </p></li><li class="listitem"><p>In the Linker section, under <span style="color: red">&lt;b&gt;Input&lt;/b&gt;</span> add
+             </p></li><li class="listitem"><p>In the Linker section, under <span class="emphasis"><em>Input</em></span> add
                    <code class="varname">glut32.lib</code>.
              </p></li></ol></div><p>
 
+</p><p>
 </p></div></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 13, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. SGL License </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 2.2. Installing on Apple Mac OS X</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 15, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch01s03.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">1.3. SGL License </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 2.2. Installing on Apple Mac OS X</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

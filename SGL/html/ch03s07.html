@@ -1,27 +1,108 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.7. Limitations of the SGL</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with the SGL" /><link rel="prev" href="ch03s06.html" title="3.6. User Input" /><link rel="next" href="ch04.html" title="Chapter 4. SGL Examples" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.limitations"></a>3.7. Limitations of the SGL</h2></div></div></div><p>
-Because the pure SGL is so simple it is also very limited.  Unlike most
-other graphics environments,
-</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
-   Only one popup menu is available at a time.
-   
-   </p></li><li class="listitem"><p>
-   The current window that has focus is the only object capable of 
-   receiving mouse and keyboard events. Compare this to a graphical
-   system like Java where an event can have multiple listeners.
-   The application can, of course,
-   set up its own event queue and handling mechanisms.
-   </p></li><li class="listitem"><p>
-   Unlike GLUT, SGL programs ignore any arguments passed to 
-   <code class="varname">main</code>.
-   </p></li></ul></div><p>
- If these limitations are too severe, you may want to consider
- another C++ graphical libraries.
- While the SGL is not targeted at the serious C++ graphics developer, 
- all 
- of the capabilities of GLUT and OpenGL are available if necessary.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.7. The SGL Procedural Interface</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with the SGL" /><link rel="prev" href="ch03s06.html" title="3.6. User Input" /><link rel="next" href="ch03s08.html" title="3.8. Limitations of the SGL" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.proceduralinterface"></a>3.7. The SGL Procedural Interface</h2></div></div></div><p>
+The SGL's object-oriented API is relatively simple and
+straightforward for developers familiar with the concepts of
+inheritance, polymorphism, virtual functions, and method
+overriding, but these concepts can be a significant barrier to
+novice programmers.  To address this, the SGL provides a simplified
+procedural interface that opens up graphics programming in C++ to
+those less familiar with OO development concepts.
+</p><p>
+The procedural API limits an application to just one graphical
+window.  The developer calls functions to register callbacks that
+respond to major events.
+<a class="xref" href="ch03s07.html#prog:placebox.cpp" title="Example 3.4. Using the Procedural Interface">Example 3.4</a> uses the procedural API within
+an application that
+allows a user to place or move a box within its window by selecting
+a position with the mouse.
+</p><div class="example"><a id="prog:placebox.cpp"></a><p class="title"><strong>Example 3.4. Using the Procedural Interface</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;GL/sgl.hpp&gt;
+
+// Box initially is out of the window
+double box_x = -10;
+double box_y = -10;
+
+void draw() {
+    sgl::set_color(sgl::BLUE);
+    sgl::fill_rectangle(box_x - 10, box_y - 10, 20, 20);
+}
+
+void mouse_pressed(double x, double y, sgl::MouseButton) {
+    box_x = x;
+    box_y = y;
+    sgl::update_window();
+}
+
+int main() {
+    sgl::create_window("BoxWindow", 0, 300, 0, 300);
+    sgl::set_paint_function(draw);
+    sgl::set_mouse_pressed_function(mouse_pressed);
+    sgl::run_window();
+}
+</pre></div></div><p><br class="example-break" />
+Note that <a class="xref" href="ch03s07.html#prog:placebox.cpp" title="Example 3.4. Using the Procedural Interface">Example 3.4</a> uses no explicit
+objects.  The <code class="varname">sgl::create_window</code> function
+behind the scenes allocates a single global graphical window
+object.  The <code class="varname">sgl::set_paint_function</code> and
+<code class="varname">set_mouse_pressed_function</code> functions allow the
+programmer to register that appropriate event handler callback
+functions.  
+The procedural API provides simmilar functions to track mouse
+movement and dragging and key presses.
+The <code class="varname">run_window</code> function calls the
+<code class="varname">run</code> on the hidden global graphical window
+object.  
+</p><p>
+<a class="xref" href="ch03s07.html#prog:placebox.cpp" title="Example 3.4. Using the Procedural Interface">Example 3.4</a> used global variables to
+maintain the state of the system (that is, the location of the box
+within the window).   
+The OO approach would have avoided the use of global variables,
+making them instance variables within a graphical window
+object.  Even though the global variables may be appropriate for the
+simple example <a class="xref" href="ch03s07.html#prog:placebox.cpp" title="Example 3.4. Using the Procedural Interface">Example 3.4</a>, good
+programming practice discourages the use of global
+variables.  Fortunately, it is possible to use the procedural
+interface along with simple OO techniques that avoid inhertiance
+and polymorphism.  
+<a class="xref" href="ch03s07.html#prog:placeboxnoglobals.cpp" title="Example 3.5. The Procedural Interface without Global Variables">Example 3.5</a> uses C++ lambda
+functions to serve as callbacks to methods within an object.  Note
+that the object <code class="varname">b</code> is local to 
+the <code class="varname">main</code> function,
+and the application declares no global variables.
+</p><div class="example"><a id="prog:placeboxnoglobals.cpp"></a><p class="title"><strong>Example 3.5. The Procedural Interface without Global Variables</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;GL/sgl.hpp&gt;
+
+class GraphicalBox {
+    int x;
+    int y;
+public:
+    GraphicalBox(int x, int y): x(x), y(y) {}
+
+    void draw() {
+        sgl::set_color(sgl::BLUE);
+        sgl::fill_rectangle(x - 10, y - 10, 20, 20);
+    }
+
+    void mouse_pressed(double mx, double my, sgl::MouseButton) {
+        x = static_cast&lt;int&gt;(mx);
+        y = static_cast&lt;int&gt;(my);
+        sgl::update_window();
+    }
+};
+
+
+int main() {
+    GraphicalBox b{-10, -10};  // Initially out of the window
+    sgl::create_window("BoxWindow", 0, 300, 0, 300);
+    sgl::set_paint_function([&amp;b]() { b.draw(); });
+    sgl::set_mouse_pressed_function([&amp;b](double x, double y, sgl::MouseButton mb) {
+                                        b.mouse_pressed(x, y, mb);
+                                    });
+    sgl::run_window();
+}
+</pre></div></div><p><br class="example-break" />
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 13, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.6. User Input </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> Chapter 4. SGL Examples</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 15, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s06.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s08.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.6. User Input </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.8. Limitations of the SGL</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.
