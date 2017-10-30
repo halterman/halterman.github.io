@@ -12,7 +12,6 @@ program, and <a class="xref" href="ch04s04.html#prog:popup.cpp" title="Example 
 code.
 </p><div class="figure"><a id="fig:colorboxmenu"></a><p class="title"><strong>Figure 4.4. Color Box with Popup Menu</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/colorboxmenu.png" align="middle" alt="Color Box with Popup Menu" /></div></div></div><p><br class="figure-break" />
 </p><div class="example"><a id="prog:popup.cpp"></a><p class="title"><strong>Example 4.3. Changing Colors with a Popup Menu</strong></p><div class="example-contents"><pre class="programlisting" width="80">
-#include &lt;memory&gt;
 #include &lt;GL/sgl.hpp&gt;
 
 class ColorBoxWindow: public sgl::Window {
@@ -85,7 +84,7 @@ public:
 };
 
 int main() {
-    std::make_unique&lt;ColorBoxWindow&gt;()-&gt;run();
+    ColorBoxWindow{}.run();
 }
 </pre></div></div><p><br class="example-break" />
 The <code class="varname">ColorSelectorPopup</code> menu is associated with
@@ -96,7 +95,7 @@ In turn, each action method can call one or more methods in
 the window object to
 change its state, it this case changing the color of the box.
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 15, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.5. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 30, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.3. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.5. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

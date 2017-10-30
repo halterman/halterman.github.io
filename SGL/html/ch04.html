@@ -12,7 +12,6 @@ mouse button over the window.  The program provides a good example
 of drawing simple shapes and responding to user input via a
 pointing device. 
 </p><div class="example"><a id="prog:trafficlightwindow.cpp"></a><p class="title"><strong>Example 4.1. Traffic Light Simulation</strong></p><div class="example-contents"><pre class="programlisting" width="80">
-#include &lt;memory&gt;
 #include &lt;GL/sgl.hpp&gt;
 
 //  Color constants used by the traffic light 
@@ -24,31 +23,31 @@ class TrafficLightWindow : public sgl::Window {
     int color;  //  Traffic light's current color
 public:
     //  Light's initial color is red
-    TrafficLightWindow() : sgl::Window("Traffic Light", 250, 600),
+    TrafficLightWindow() : sgl::Window("Traffic Light", 300, 600),
                                        color(red) {}
     void paint() override {
         //  Draw the frame
         sgl::set_color(sgl::GRAY);
-        sgl::fill_rectangle(25, 25, 200, 550);
+        sgl::fill_rectangle(50, 25, 200, 550);
 
         //  Draw the red lamp
         if (color == red)
             sgl::set_color(sgl::RED);
         else
             sgl::set_color(sgl::BLACK);
-        sgl::fill_circle(125, 475, 70);
+        sgl::fill_circle(150, 475, 70);
         //  Draw the yellow lamp
         if (color == yellow)
             sgl::set_color(sgl::YELLOW);
         else
             sgl::set_color(sgl::BLACK);
-        sgl::fill_circle(125, 300, 70);
+        sgl::fill_circle(150, 300, 70);
         //  Draw the green lamp
         if (color == green)
             sgl::set_color(sgl::GREEN);
         else
             sgl::set_color(sgl::BLACK);
-        sgl::fill_circle(125, 125, 70);
+        sgl::fill_circle(150, 125, 70);
     }
 
     void mouse_pressed(double, double, sgl::MouseButton) override {
@@ -59,7 +58,7 @@ public:
 };
 
 int main() {
-    std::make_unique&lt;TrafficLightWindow&gt;()-&gt;run();
+    TrafficLightWindow{}.run();
 }
 </pre></div></div><p><br class="example-break" />
 <a class="xref" href="ch04.html#fig:trafficlightwindow" title="Figure 4.1. Traffic Light Simulation Window">Figure 4.1</a> is a screenshot of the 
@@ -74,7 +73,7 @@ layout.  Compare the numbers on the diagram to the arguments passed in the
 </p><div class="figure"><a id="fig:trafficlightdesign"></a><p class="title"><strong>Figure 4.2. Traffic Light Simulation Window</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/trafficlightdesign.png" align="middle" alt="Traffic Light Simulation Window" /></div></div></div><p><br class="figure-break" />
 
 </p></div></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 15, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s08.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.8. Limitations of the SGL </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.2. Receiving Mouse Input</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.0</font></td><td width="40%" align="right"><font color="red">October 30, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s08.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="ch04s02.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.8. Limitations of the SGL </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.2. Receiving Mouse Input</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.
