@@ -1,5 +1,5 @@
 .programlisting {
-    font-family: monospace ;
+    font-family: "Lucida Console", "Consolas", monospace ;
     font-size: 1em ;
     display: block ;
     padding: 10px ;
@@ -16,9 +16,9 @@
 }
 
 .varname {
-	font-family: monospace ;
+        font-family: "Lucida Console", "Consolas", monospace ;
 	font-weight: bold ;
-        font-size: larger ;
+        /*font-size: larger ;*/
 	color: #000 ; 
 }
 
@@ -37,10 +37,10 @@
 }
 
 .screen {
-	font-family: monospace ;
+    font-family: "Lucida Console", "Consolas", monospace ;
     font-size: larger ;
     background-color: #eee ; 
-    color: #00a ;
+    color: #007 ;
     margin: 0.5em 5em ;
     padding: 10px ;
     /*
