@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.5. Animation</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s04.html" title="4.4. Adding a Popup Menu" /><link rel="next" href="ch04s06.html" title="4.6. Circle Random Walk" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.animation"></a>4.5. Animation</h2></div></div></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.5. Animation</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s04.html" title="4.4. Adding a Popup Menu" /><link rel="next" href="ch04s06.html" title="4.6. Circle Random Walk" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.animation"></a>4.5. Animation</h2></div></div></div><p>
 <a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4.4. Clock Animation">Example 4.4</a> illustrates the use of an
 SGL timer that controls the aimation of an analog clock.
 </p><div class="example"><a id="prog:clockanimation.cpp"></a><p class="title"><strong>Example 4.4. Clock Animation</strong></p><div class="example-contents"><pre class="programlisting" width="80">
@@ -118,7 +118,7 @@ public:
 };
 
 int main() {
-    ClockWindow{}.run();
+    sgl::run&lt;ClockWindow&gt;();
 }
 </pre><a class="xref" href="ch04s05.html#fig:animatedclock" title="Figure 4.5. Animating a Clock">Figure 4.5</a> shows the program in action.
 </div></div><p><br class="example-break" />
@@ -147,8 +147,8 @@ In <a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4
 the automatic animation controlled by the timer, the
 user can speed up the minute time lapses by pressing a mouse button
 or pressing a key.
-</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">October 30, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Adding a Popup Menu </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.6. Circle Random Walk</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Adding a Popup Menu </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.6. Circle Random Walk</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

@@ -3,7 +3,7 @@
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"> 
 
 <xsl:import
- href="/usr/share/sgml/docbook/xsl-stylesheets/xhtml/chunk.xsl"/> 
+ href="/usr/share/xml/docbook/stylesheet/docbook-xsl/xhtml/chunk.xsl"/> 
 
 <!--    VERY OLD
 <xsl:import
@@ -61,12 +61,12 @@
     <hr/>
         <table border="0" width="100%">
         <tr><td width="40%" align="left">
-    <i>Copyright</i> <font>&#160; &#169;</font>  <i>2017 Richard L.
+    <i>Copyright</i> <font>&#160; &#169;</font>  <i>2019 Richard L.
     Halterman</i></td>
         <td width="20%" align="center">
     <font color="red">Version 0.9.1</font></td>
         <td width="40%" align="right">
-    <font color="red">October 30, 2017</font></td></tr>
+    <font color="red">February  3, 2019</font></td></tr>
         </table>
     
 </xsl:template>

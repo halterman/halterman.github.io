@@ -4,7 +4,7 @@ var searchData=
   ['digits',['digits',['../classsgl_1_1Multidigit.html#a02b9614f6acd3b71e0695517d6e88bb2',1,'sgl::Multidigit']]],
   ['displaydigit',['DisplayDigit',['../classsgl_1_1DisplayDigit.html',1,'sgl::DisplayDigit'],['../classsgl_1_1DisplayDigit.html#a613a2fbc14f6b468b3dfd787d1ec18c0',1,'sgl::DisplayDigit::DisplayDigit()']]],
   ['doubledigit',['DoubleDigit',['../classsgl_1_1DoubleDigit.html',1,'sgl::DoubleDigit'],['../classsgl_1_1DoubleDigit.html#aedd615e43c78e8779cfe2a5507554933',1,'sgl::DoubleDigit::DoubleDigit()']]],
-  ['draw_5faxes',['draw_axes',['../classsgl_1_1Window.html#a0afa7a9d43ad12a183b1dfdcc3942ea0',1,'sgl::Window']]],
+  ['draw_5faxes',['draw_axes',['../classsgl_1_1Window.html#a48d440cb0b847150c89a404ddca6a19f',1,'sgl::Window']]],
   ['draw_5fcircle',['draw_circle',['../namespacesgl.html#ada92b418790cb6bd5bc0af745ab76f2f',1,'sgl']]],
   ['draw_5fdashed_5fline',['draw_dashed_line',['../namespacesgl.html#aaf00104a4f5eb9f3876bfc8d3f6acacc',1,'sgl']]],
   ['draw_5ffunction',['draw_function',['../namespacesgl.html#a85c6b975ae6084d683884a90d937aa72',1,'sgl']]],

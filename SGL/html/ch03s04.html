@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.4. SGL Coordinate System</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.77.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with the SGL" /><link rel="prev" href="ch03s03.html" title="3.3. SGL Application Architecture" /><link rel="next" href="ch03s05.html" title="3.5. Displaying Graphics" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.coordinatesystem"></a>3.4. SGL Coordinate System</h2></div></div></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>3.4. SGL Coordinate System</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch03.html" title="Chapter 3. Working with the SGL" /><link rel="prev" href="ch03s03.html" title="3.3. SGL Application Architecture" /><link rel="next" href="ch03s05.html" title="3.5. Displaying Graphics" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:workingwith.coordinatesystem"></a>3.4. SGL Coordinate System</h2></div></div></div><p>
 When investigating a new programming language or development
 environment it is traditional to write a "Hello world" program.  
 <a class="xref" href="ch03s04.html#prog:helloworld.cpp" title="Example 3.1. Hello World in SGL">Example 3.1</a> is the SGL equivalent.
@@ -24,7 +24,7 @@ public:
 
 int main() {
     //  Create a window and call its run method
-    HelloWindow{}.run();
+    sgl::run&lt;HelloWindow&gt;();
 }
 </pre></div></div><p><br class="example-break" />
 <a class="xref" href="ch03s04.html#fig:helloworldwindow" title="Figure 3.1. Hello World Screenshot">Figure 3.1</a> provides a screenshot of the
@@ -99,8 +99,8 @@ The <code class="varname">draw_axes</code> method of the
 <code class="varname">paint</code> method to draw the viewport's
 <span class="emphasis"><em>x</em></span> and <span class="emphasis"><em>y</em></span> axes, along with
 additional grid lines.
-</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2017 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">October 30, 2017</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3. SGL Application Architecture </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.5. Displaying Graphics</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+</p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s05.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.3. SGL Application Architecture </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.5. Displaying Graphics</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

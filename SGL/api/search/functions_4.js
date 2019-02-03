@@ -3,7 +3,7 @@ var searchData=
   ['decrement',['decrement',['../classsgl_1_1SevenSegmentDigit.html#a7e6b675c657a9cfae7b828ea4ee53a21',1,'sgl::SevenSegmentDigit::decrement()'],['../classsgl_1_1DisplayDigit.html#a5b233211130be7ffa295c747c3b7b3d6',1,'sgl::DisplayDigit::decrement()'],['../classsgl_1_1DoubleDigit.html#affcb1123e0f978b5d97c845d621fd6df',1,'sgl::DoubleDigit::decrement()'],['../classsgl_1_1Multidigit.html#a4d6be37a6393cd3039c65e8a0ef796ad',1,'sgl::Multidigit::decrement()'],['../classsgl_1_1TimeDisplay.html#a5687e657dc30d6efa7892bae1bb0ad2b',1,'sgl::TimeDisplay::decrement()']]],
   ['displaydigit',['DisplayDigit',['../classsgl_1_1DisplayDigit.html#a613a2fbc14f6b468b3dfd787d1ec18c0',1,'sgl::DisplayDigit']]],
   ['doubledigit',['DoubleDigit',['../classsgl_1_1DoubleDigit.html#aedd615e43c78e8779cfe2a5507554933',1,'sgl::DoubleDigit']]],
-  ['draw_5faxes',['draw_axes',['../classsgl_1_1Window.html#a0afa7a9d43ad12a183b1dfdcc3942ea0',1,'sgl::Window']]],
+  ['draw_5faxes',['draw_axes',['../classsgl_1_1Window.html#a48d440cb0b847150c89a404ddca6a19f',1,'sgl::Window']]],
   ['draw_5fcircle',['draw_circle',['../namespacesgl.html#ada92b418790cb6bd5bc0af745ab76f2f',1,'sgl']]],
   ['draw_5fdashed_5fline',['draw_dashed_line',['../namespacesgl.html#aaf00104a4f5eb9f3876bfc8d3f6acacc',1,'sgl']]],
   ['draw_5ffunction',['draw_function',['../namespacesgl.html#a85c6b975ae6084d683884a90d937aa72',1,'sgl']]],
