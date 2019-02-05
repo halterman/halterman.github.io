@@ -10,9 +10,9 @@ the programmer does not use a statement such as
   std::cin &gt;&gt; value;
 </pre><p>
 that causes the program's execution to come to a halt and wait for
-the user to enter a value.  In this situation the timing of the
+the user to enter a value.  In this situation, the timing of the
 user's input is predetermined; when the program's execution gets to
-the statement containing <code class="varname">cin</code>, the user must
+the statement containing <code class="varname">std::cin</code>, the user must
 provide input.  In a graphical, event-driven environment, 
 the user may move the
 mouse pointer anywhere within an application's window and 
@@ -25,10 +25,9 @@ gives the user a choice to save a document or quit the application.
 Events other than user input are possible; for example, an
 animation may use a timer to 
 notify the application every 200 milliseconds that the contents of 
-the window needs
-to be redrawn.
+the window need to be redrawn.
 </p><p>
-In an event-driven environment the programmer starts the 
+In an event-driven environment, the programmer starts the 
 framework's event processing loop, thereby releasing control of the
 program's execution.  In the SGL, the programmer calls the 
 <code class="varname">run</code>
@@ -37,7 +36,7 @@ The SGL event manager (which is actually the GLUT event loop)
 provides checks for events.
 The programmer's responsibility is to write code 
 that the SGL framework can call on when an event occurs. 
-Whan an event occurs, the SGL event manager calls a corresponding 
+When an event does occur, the SGL event manager calls a corresponding 
 method in the window object.
 </p><p>
 As an example, consider the user pressing the mouse button
@@ -46,7 +45,7 @@ window on the display corresponds to a C++ software object that
 is an instance of a class derived from
 <code class="varname">sgl::Window</code>.  The <code class="varname">Window</code>
 class provides a method called <code class="varname">mouse_pressed</code>.
-When the user depresses the mouse button the event manager reacts by
+When the user depresses the mouse button, the event manager reacts by
 invoking the <code class="varname">mouse_pressed</code> method of the affected
 window.  The event manager passes to the method the pointer's 
 location and information about which button
@@ -61,12 +60,12 @@ overriding the <code class="varname">mouse_pressed</code> method.  Failure to
 override the method results in the derived class inheriting
 the do nothing method of the <code class="varname">Window</code> class.
 </p><p>
-In the SGL, as in GLUT, when the event manager is activated the client
+In the SGL, as in GLUT, when the event manager is activated, the client
 code cannot take back control over the program's execution.  The
 SGL event manager controls the execution until the program terminates.
  
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Working with the SGL </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.3. SGL Application Architecture</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  4, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Working with the SGL </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.3. SGL Application Architecture</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

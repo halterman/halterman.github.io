@@ -1,154 +1,210 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.5. Animation</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s04.html" title="4.4. Adding a Popup Menu" /><link rel="next" href="ch04s06.html" title="4.6. Circle Random Walk" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.animation"></a>4.5. Animation</h2></div></div></div><p>
-<a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4.4. Clock Animation">Example 4.4</a> illustrates the use of an
-SGL timer that controls the aimation of an analog clock.
-</p><div class="example"><a id="prog:clockanimation.cpp"></a><p class="title"><strong>Example 4.4. Clock Animation</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.5. Circle Random Walk</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s04.html" title="4.4. Animation" /><link rel="next" href="ch04s06.html" title="4.6. Calling OpenGL/GLUT Routines Directly" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.coverart"></a>4.5. Circle Random Walk</h2></div></div></div><p>
+<a class="xref" href="ch04s05.html#prog:circlewalk.cpp" title="Example 4.5. Circle Random Walk">Example 4.5</a> uses a circle to trace the
+<a class="ulink" href="http://en.wikipedia.org/wiki/Random_walk" target="_top">
+random walk</a>
+of a circle across a window.  The circle leaves a path as 
+it moves, and it
+periodically changes its size and its color.  
+
+</p><div class="example"><a id="prog:circlewalk.cpp"></a><p class="title"><strong>Example 4.5. Circle Random Walk</strong></p><div class="example-contents"><pre class="programlisting" width="80">
+#include &lt;vector&gt;
 #include &lt;GL/sgl.hpp&gt;
-#include &lt;cmath&gt;
-#include &lt;sstream&gt;
-#include &lt;iomanip&gt;
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+
+struct Circle {
+    double x;          //  The location of the circle's center:
+    double y;          //  point (x,y)
+    double r;          //  The circle's radius
+    sgl::Color color;  //  The circle's color
+    //  Constructor requires location, radius, and color information
+    Circle(double x, double y, double r, const sgl::Color&amp; color) : x(x), y(y), r(r), color(color) {}
+    void draw() {
+        sgl::set_color(color);
+        sgl::draw_circle(x, y, r + 1);
+        sgl::set_color(sgl::WHITE);
+        sgl::fill_circle(x, y, r);
+    }
+};
 
 
-const double MIN_X = -100.0,
-             MAX_X =  100.0,
-             MIN_Y = -100.0,
-             MAX_Y =  100.0;
+//  A window that traces the movements of a circle
+//  on a random walk.  The trace leaves behind a multicolor
+//  tube-like structure of varying diameter
+class RandomCircleWindow : public sgl::Window {
+    double x;                   //  Current position of the
+    double y;                   //  circle's center: (x, y)
+    double z;                   //  Circle's radius
 
-const int FONT_SIZE = 18;
+    int dx;                     //  Change in x
+    int dy;                     //  Change in y
+    double dz;                  //  Change in radius
 
-const int TIME_INCREMENT = 200;
+    int run_x;                  //  Length of run for dx
+    int run_y;                  //  Length of run for dy
+    int run_z;                  //  Length of run for radius change
 
-const double PI = 3.141592653589793,  //  Close enough!
-             HALF_PI = PI/2.0;
+    bool animate;               //  Are we animating?
 
-std::ostringstream oss;
+    std::vector&lt;Circle&gt; track;  //  Record of all the circle locations
 
-sgl::Point minutes_to_position(int minutes, double offset) {
-    double x = MAX_X/2.0 - offset, 
-           y = 0.0,
-           fraction = -PI*minutes/30 + HALF_PI,
-           sine = std::sin(fraction), 
-           cosine = std::cos(fraction);
-    return {x*cosine - y*sine, x*sine   + y*cosine};
-}
+    sgl::Color current_color;   //  The current color for a circle 
+    int color_run;
 
-sgl::Point hours_to_position(int hours, int minutes, double offset) {
-    return minutes_to_position(static_cast&lt;int&gt;((hours + minutes/60.0)*5), offset);
-}
+    //  Save the current locations to a text file
+    void save() {
+        std::string filename;
+        std::cout &lt;&lt; "Enter file name: ";        //  Get file name from user
+        std::cin &gt;&gt; filename;
+        std::ofstream fout(filename);            //  Open file for writing, if possible
+        if (fout.good()) {
+            fout &lt;&lt; track.size() &lt;&lt; '\n';   //  Store number of circles
+            //  Store each circle's component data about its location, size, and color
+            for (auto&amp; circ : track)
+                fout &lt;&lt; circ.x &lt;&lt; ' ' &lt;&lt; circ.y &lt;&lt; ' ' &lt;&lt; circ.r &lt;&lt; ' '
+                     &lt;&lt; circ.color.red &lt;&lt; ' ' &lt;&lt; circ.color.green &lt;&lt; ' ' 
+                     &lt;&lt; circ.color.blue &lt;&lt; '\n';
+        }
+        else
+            std::cout &lt;&lt; "Could not save the file" &lt;&lt; '\n';
+    }
 
-std::string time_to_string(int hours, int minutes) {
-    oss.str("");  //  Clear the output string
-    oss.width(2);
-    oss.fill(' ');
-    oss &lt;&lt; ((hours == 0)? 12 : hours) &lt;&lt; ":";
-    oss.width(2);
-    oss.fill('0');
-    oss &lt;&lt; minutes;
-    return oss.str();
-}
+    //  Load circle locations from a text file
+    void load() {
+        std::string filename;
+        std::cout &lt;&lt; "Enter file name: ";  //  Get file name from user
+        std::cin &gt;&gt; filename;
+        std::ifstream fin(filename);       //  Oprn the file for reading, if possible
+        if (fin.good()) {
+            track.clear();            //  Empty the circle vector
+            int size;
+            fin &gt;&gt; size;              //  Read number of circles
+            //  Obtain the location, size, and color information for each circle
+            for (int i = 0; i &lt; size; i++) {
+                double in_x, in_y, in_z, red, green, blue;
+                fin &gt;&gt; in_x &gt;&gt; in_y &gt;&gt; in_z;
+                fin &gt;&gt; red &gt;&gt; green &gt;&gt; blue;
+                //  Add the circle to the collection of circles
+                track.push_back(Circle(in_x, in_y, in_z, sgl::Color(red, green, blue)));
+            }
+        }
+        else
+            std::cout &lt;&lt; "Could not load the file" &lt;&lt; '\n';
 
-class ClockWindow: public sgl::Window {
-    int hours;
-    int minutes;
+    }
 public:
-    ClockWindow(): sgl::Window("Clock", 100, 100, 500, 500,
-        MIN_X, MAX_X, MIN_Y, MAX_Y), hours(0), minutes(0) {
-        start_timer(TIME_INCREMENT);
+    //  Create a window of sufficient size
+    RandomCircleWindow(double min_x, double max_x, double min_y, double max_y) :
+                         sgl::Window("Tubes", min_x, max_x, min_y, max_y),
+                         x((min_x + max_x) / 2), y((min_y + max_y) / 2), z(10),
+                         dx(0), dy(0), dz(0.01), run_x(0), run_y(0), run_z(0),
+                         animate(true), current_color(0.9, 0.9, 0.9), color_run(0) {
+        start_timer(1);   //  Enable animation
     }
 
+    //  Draw the track of all the multicolor circles
     void paint() override {
-        //  Draw frame
-        sgl::set_line_width(1);
-        sgl::draw_circle(0.0, 0.0, MIN_X/2.0 - 5.0);
-        //  Draw center
-        sgl::fill_circle(0.0, 0.0, 2.0);
-        //  Draw positions
-        sgl::Point loc;
-        for (int i = 0; i &lt; 12; i++) {
-            loc = hours_to_position(i, 0, 1.0);
-            sgl::fill_rectangle(loc.x - 2.0, loc.y - 2.0, 4.0, 4.0);
-        }
-        //  Draw minute hand
-        sgl::set_line_width(2);
-        loc = minutes_to_position(minutes, 5.0);
-        sgl::draw_line(0.0, 0.0, loc.x, loc.y);
-        //  Draw hour hand
-        sgl::set_line_width(5);
-        loc = hours_to_position(hours, minutes, 20.0);
-        sgl::draw_line(0.0, 0.0, loc.x, loc.y);
-        //  Print digital text
-        sgl::draw_text(time_to_string(hours, minutes).c_str(), -5.0, MIN_Y + 5.0, 18);
+        for (auto&amp; circ : track)
+            circ.draw();
     }
 
-    void update_time() {
-        minutes++;
-        if (minutes == 60) {
-            minutes = 0;
-            hours++;
-            if (hours == 12)
-                hours = 0;
+    //  Respond to user's key strokes
+    void key_pressed(int k, double mouse_x, double mouse_y) override {
+        if (animate)
+            animate = false;
+        else {
+            animate = true;
+            start_timer(1);
         }
+        animate = !animate;   //  Pause or resume
+        switch (k) {
+            case 'S':  //  Save the circle track to a text file
+            case 's':
+                save();
+                break;
+            case 'L':  //  Load a circle track from a text file
+            case 'l':
+                load();
+                break;
+        }
+        std::cout &lt;&lt; "# circles: " &lt;&lt; track.size() &lt;&lt; '\n';
         repaint();
+        sgl::Window::key_pressed(k, mouse_x, mouse_y);  //  Defer to base class for further processing
     }
 
-    void timer_expired() {
-        update_time();
-        start_timer(TIME_INCREMENT);
-    }
-
-    void mouse_pressed(double, double, sgl::MouseButton) override {
-        update_time();
-    }
-
-    void key_pressed(int key, double x, double y) override {
-        update_time();
-        sgl::Window::key_pressed(key, x, y);
-    }
-
-    void resized(int w, int h) override {
-        if (w != h) {
-            if (w &lt; h)
-                h = w;
-            else
-                w = h;
-            set_window_size(w, h);
+    void timer_expired() override {
+        //  Determine if a run of each component has run its course
+        //  and update if necessary
+        if (run_x == 0) {
+            run_x = sgl::random(1, 100);  //  Determine length of next run for x
+            dx = sgl::random(-3, 3);      //  New x direction and speed
         }
-        sgl::Window::resized(w, h);
+        if (run_y == 0) {
+            run_y = sgl::random(1, 100);  //  Determine length of next run for y
+            dy = sgl::random(-3, 3);      //  New y direction and speed
+        }
+        if (run_z == 0) {
+            run_z = sgl::random(1, 100);  //  Determine length of next run for the radius
+            dz = 0.1* sgl::random(-3, 3); //  New radius
+            //dz = 0.1;   //  Fixed radius
+        }
+        x += dx;   //  Update x
+        y += dy;   //  Update y
+        z += dz;   //  Update radius
+        //  Limit the range of the circle's random walk
+        x = (x &lt; min_x - z) ? min_x - z : x;
+        x = (x &gt; max_x + z) ? max_x + z : x;
+        y = (y &lt; min_y - z) ? min_y - z : y;
+        y = (y &gt; max_y + z) ? max_y + z : y;
+        //  Bound the circle's size
+        z = (z &lt; 10) ? 10 : z;
+        z = (z &gt; 30) ? 30 : z;
+
+        run_x--;   //  Completed one more step of the run for x
+        run_y--;   //  Completed one more step of the run for y 
+        run_z--;   //  Completed one more step of the run for radius
+
+        //  Determine if the color has run its course, and a new 
+        //  color should be generated
+        if (color_run == 0) {
+            color_run = sgl::random(100, 1000);  //  New run length
+            current_color.red = sgl::random(1, 1000) / 1000.0;    //  New red component
+            current_color.green = sgl::random(1, 1000) / 1000.0;  //  New green component
+            current_color.blue = sgl::random(1, 1000) / 1000.0;   //  New blue component
+        }
+
+        color_run--;  //  Completed one more step of the run for this color
+
+        if (animate)   //  Should we continue to track circles?
+            start_timer(1);
+        //repaint();
+        //  Record the information for this circle
+        track.push_back(Circle(x, y, z, current_color));
     }
 };
 
 int main() {
-    sgl::run&lt;ClockWindow&gt;();
+    sgl::set_random_seed(42);   //  Set the random number generator seed
+    //  Make and run a window for displaying the circles
+    RandomCircleWindow{0, 1900, 0, 1000}.run();
 }
-</pre><a class="xref" href="ch04s05.html#fig:animatedclock" title="Figure 4.5. Animating a Clock">Figure 4.5</a> shows the program in action.
-</div></div><p><br class="example-break" />
-</p><div class="figure"><a id="fig:animatedclock"></a><p class="title"><strong>Figure 4.5. Animating a Clock</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/animatedclock.png" align="middle" alt="Animating a Clock" /></div></div></div><p><br class="figure-break" />
-Observe that the program provides a digital display of the time in
-addition to the analog clock face.
+</pre></div></div><p><br class="example-break" />
+The net effect of
+<a class="xref" href="ch04s05.html#prog:circlewalk.cpp" title="Example 4.5. Circle Random Walk">Example 4.5</a> 
+<a id="idm566" class="indexterm"></a> is that it leaves 
+an image that resembles multicolored pipes flowing through a
+space. 
+<a class="xref" href="ch04s05.html#prog:circlewalk.cpp" title="Example 4.5. Circle Random Walk">Example 4.5</a> is responsible for 
+the art on the 
+<a class="ulink" href="./index.html" target="_top">
+title page of this document</a>.
 </p><p>
-The window's constructor sets a timer running.
-Every
-200 milliseconds (1/5 of a second) the
-event manager calls the window's <code class="varname">timer_expired</code> method.
-The <code class="varname">timer_expired</code> method calls the
-<code class="varname">update_time</code> method to adjust the
-<code class="varname">hours</code> and
-<code class="varname">minutes</code> values and notifies the event manager 
-that the window needs to be
-repainted.   The <code class="varname">paint</code> method draws the clock
-with the hands in their proper places based on the values of
-<code class="varname">hours</code> and <code class="varname">minutes</code>.  Some
-helper functions take care of the mathematics.
-Observe that an SGL timer (like a GLUT timer) sends the notification
-event once; the programmer must restart the timer after each
-timeout to continuously send notifications to the window.
-</p><p>
-In <a class="xref" href="ch04s05.html#prog:clockanimation.cpp" title="Example 4.4. Clock Animation">Example 4.4</a> in addition to 
-the automatic animation controlled by the timer, the
-user can speed up the minute time lapses by pressing a mouse button
-or pressing a key.
+<a class="xref" href="ch04s05.html#fig:circlewalkwindow" title="Figure 4.6. Circle Random Walk">Figure 4.6</a> provides a screenshot of 
+one of the random walks.
+</p><div class="figure"><a id="fig:circlewalkwindow"></a><p class="title"><strong>Figure 4.6. Circle Random Walk</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/circlewalk.png" align="middle" width="535" alt="Circle Random Walk" /></div></div></div><p><br class="figure-break" />
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Adding a Popup Menu </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.6. Circle Random Walk</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  4, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s04.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s06.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.4. Animation </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.6. Calling OpenGL/GLUT Routines Directly</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

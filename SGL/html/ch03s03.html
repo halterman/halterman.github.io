@@ -57,12 +57,12 @@ Since the <code class="varname">sgl.hpp</code> header file contains
 implementations of all the SGL functions and classes, if more than
 one source file in a project attempts to 
 <code class="varname">#include</code> the
-<code class="varname">sgl.hpp</code> header file, linker will detect the muliple
-definitions for identical fuctions and methods and issue an error.  
+<code class="varname">sgl.hpp</code> header file, linker will detect the multiple
+definitions for identical functions and methods and issue an error.  
 That is why programmers must 
 <code class="varname">#include</code> the
-<code class="varname">sgl.hpp</code> header file in one and only file in
-a project.
+<code class="varname">sgl.hpp</code> header file in one and only one source
+file in a project.
 </p><p>
 All SGL programs consist of at least one graphical window.  The
 window provides output to the user, typically with graphical
@@ -109,10 +109,11 @@ identifiers is shown here:
 </pre><p>
 </p><p>
 The <code class="varname">sgl::Window</code> class is an abstract class
-because its <code class="varname">paint</code> method is pure virtual.  It is the
+because its <code class="varname">paint</code> method is a pure virtual
+function.  It is the
 responsibilty of the <code class="varname">paint</code>
 method to draw the contents of the window.  The programmer does not
-call <code class="varname">paint</code> directly; the event manager of the 
+call <code class="varname">paint</code> directly; instead, the event manager of the 
 SGL framework code
 calls a window object's <code class="varname">paint</code> method when the
 window needs to be displayed; for example, when the window
@@ -147,7 +148,7 @@ SGL framework calls to handle specific events:
    <code class="varname">key_pressed</code> is called when the user types 
    a key when the window has focus.
    </p></li></ul></div><p>
-Each of these input events have empty concrete implementations in the
+Each of these input events has empty concrete implementations in the
 <code class="varname">Window</code> class.  This means if a derived class
 does not override one of these methods, an instance of the derived
 class will effectively ignore any events of that type sent by the
@@ -167,7 +168,7 @@ received in order to use them,
 the overhead of using event objects was abandoned for the simpler
 approach of passing the individual primitive parameters.
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2. Event-driven Programming </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.4. SGL Coordinate System</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  4, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch03s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch03.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch03s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">3.2. Event-driven Programming </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 3.4. SGL Coordinate System</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

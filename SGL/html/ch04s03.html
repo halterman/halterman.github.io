@@ -1,220 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.3. Adding Graphical Objects</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s02.html" title="4.2. Receiving Mouse Input" /><link rel="next" href="ch04s04.html" title="4.4. Adding a Popup Menu" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.graphicalobjects"></a>4.3. Adding Graphical Objects</h2></div></div></div><p>
-The examples to this point have drawn graphic images within windows.  
-The
-<code class="varname">sgl::fill_rectangle</code> function, for example, draws a solid rectangle
-in a window, but the image has no existance other than its visual appearance on the
-window's canvas.  It works like a picture drawn on a whiteboard; to move the rectangle
-within a window the program must erase the window where the rectangle appears and 
-redraw a similar rectangle elsewhere.  A programmer cannot modify a rectangle image once it
-is drawn, as
-it is not a software object that maintains a certain state and that provides operations 
-that can change its state. 
-</p><p>
-The SGL supports <span class="emphasis"><em>graphical objects</em></span> which are software objects that
-can present a visual image within a window.  As true software objects, graphical objects
-can provide methods that allow programmers to move them, resize them, alter their color,
-etc. Programmers can design graphical objects within an application that allow 
-users to interact with them in ways that simulate manipulating physical objects in the
-real world.
-</p><p>
-In order to use graphical objects within a program, programmers subclass
-<code class="varname">sgl::ObjectWindow</code>.  An 
-<code class="varname">sgl::ObjectWindow</code> instance serves as a container for graphical objects.
-A programmer then would subclass <code class="varname">sgl::GraphicalObject</code> to provide the
-needed application-specific functionality of the graphical object.  The SGL provides the
-framework that makes it easy for programmers to design graphical objects that the user can
-move around within the application's window.  These graphical objects can receive and
-process events such a mouse clicks, mouse motion, and keypresses.  A graphical object can
-present an image of itself within its containing window, and this image can change as
-its state changes.
-</p><p>
-An application adds a graphical object to the window via the
-<code class="varname">sgl::ObjectWindow::add</code> method.
-</p><a class="xref" href="ch04s03.html#prog:variousobjects.cpp" title="Example 4.2. Adding Various Graphical Objects">Example 4.2</a> illustrates some of the capabilities of 
-graphical objects.
-<div class="example"><a id="prog:variousobjects.cpp"></a><p class="title"><strong>Example 4.2. Adding Various Graphical Objects</strong></p><div class="example-contents"><pre class="programlisting" width="80">
-#include &lt;cmath&gt;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4.3. Adding a Popup Menu</title><link rel="stylesheet" type="text/css" href="../stylesheets/sgl.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="home" href="index.html" title="SGL: Simple Graphics Library" /><link rel="up" href="ch04.html" title="Chapter 4. SGL Examples" /><link rel="prev" href="ch04s02.html" title="4.2. Adding Graphical Objects" /><link rel="next" href="ch04s04.html" title="4.4. Animation" /></head><body><div class="sect1"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec:examples.popupmenu"></a>4.3. Adding a Popup Menu</h2></div></div></div><p>
+<a class="xref" href="ch04s03.html#prog:popup.cpp" title="Example 4.3. Changing Colors with a Popup Menu">Example 4.3</a> is a variation of 
+<a class="xref" href="ch03s06.html#prog:colorbox.cpp" title="Example 3.3. User Input">Example 3.3</a>.  Instead of clicking the mouse
+button inside the window to change the color of the box, the user can
+select a color from a popup menu.  
+The menu is activated by
+pressing and releasing the right mouse button when the mouse
+pointer is within the window.
+<a class="xref" href="ch04s03.html#fig:colorboxmenu" title="Figure 4.4. Color Box with Popup Menu">Figure 4.4</a> is a picture of the running
+program, and <a class="xref" href="ch04s03.html#prog:popup.cpp" title="Example 4.3. Changing Colors with a Popup Menu">Example 4.3</a> provides the source
+code.
+</p><div class="figure"><a id="fig:colorboxmenu"></a><p class="title"><strong>Figure 4.4. Color Box with Popup Menu</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/colorboxmenu.png" align="middle" alt="Color Box with Popup Menu" /></div></div></div><p><br class="figure-break" />
+</p><div class="example"><a id="prog:popup.cpp"></a><p class="title"><strong>Example 4.3. Changing Colors with a Popup Menu</strong></p><div class="example-contents"><pre class="programlisting" width="80">
 #include &lt;GL/sgl.hpp&gt;
-#include &lt;iostream&gt;
 
-//  Some constants to compute the points of a 5-point star
-static const double DEGREES_TO_RADIANS = 3.14159/180.0,
-                    ANGLE = 360.0/5.0,
-                    SIN = sin(ANGLE*DEGREES_TO_RADIANS),
-                    COS = cos(ANGLE*DEGREES_TO_RADIANS);
-
-class VariousObjectsWindow: public sgl::ObjectWindow {
+class ColorBoxWindow: public sgl::Window {
 protected:
-    class Shape: public sgl::GraphicalObject {
-    protected:
-        sgl::Color color;
+    //  Access to this custom popup menu class is restricted to
+    //  code within this ColorBoxWindow class.
+    class ColorSelectorPopup : public sgl::PopupMenu {
     public:
-        Shape(double x, double y, double width, double height, sgl::Color color):
-              sgl::GraphicalObject(x - width/2.0, y - height/2.0, width, height), color(color) {
-            //  Shapes by default use a crosshairs-shaped cursor
-            set_cursor(sgl::CursorShape::Crosshair);
-        }
-        //  Shape is abstract because pure virtual paint method is not overridden
-    };
-
-    class CircularShape: public Shape {
-    protected:
-        //  Controls the user's ability to move the object 
-        bool is_locked;
-    public:
-        CircularShape(double x, double y, double diameter, sgl::Color color):
-          Shape(x, y, diameter, diameter, color), is_locked(false) {} 
-  
-        void paint() const override {
-            set_color(color);
-            //  Locked circles drawn as outlines
-            if (is_locked)
-                sgl::draw_circle(left + width/2.0, bottom + height/2.0, width/2.0);
-            else
-                sgl::fill_circle(left + width/2.0, bottom + height/2.0, width/2.0);
-            //  When the mouse is over this circle draw a ring  around it
-            if (mouse_over)
-                sgl::draw_circle(left + width/2.0, bottom + height/2.0, width/2.0 + 5.0);
-        }
-
-        //  Pressing the 'L' key toggles locking and unlocking
-        //  this circle; the user cannot move a locked circle
-        void key_pressed(int key, double x, double y) override {
-            if (key == 'L' || key == 'l') {
-                is_locked = !is_locked;
-                Shape::key_pressed(key, x, y);
-                window-&gt;repaint();
-            }
-        }
-
-        //  Moves a circle object if it currently is not locked
-        void move_to(double x, double y) override {
-            if (!is_locked)
-                Shape::move_to(x, y);
+        //  The constructor associates a menu item with an action
+        //  to perform.  Each action is a method within this class.
+        ColorSelectorPopup(ColorBoxWindow *win) : sgl::PopupMenu(win) {
+            add_menu_item("Red", &amp;ColorBoxWindow::set_color_red);
+            add_menu_item("Green", &amp;ColorBoxWindow::set_color_green);
+            add_menu_item("Blue", &amp;ColorBoxWindow::set_color_blue);
+            add_menu_item("Black", &amp;ColorBoxWindow::set_color_black);
+            add_menu_item("Quit", &amp;ColorBoxWindow::quit);
         }
     };
-
-    class RectangularShape: public Shape {
-    public:
-        RectangularShape(double x, double y, double width, double height, sgl::Color color):
-                            Shape(x, y, width, height, color) {
-            //  Rectangle objects use the standard cursor instead of the default crosshairs cursor 
-            //  inherited from Shape 
-            set_cursor(sgl::CursorShape::Right_arrow);
-        } 
-  
-        void paint() const override {
-            sgl::set_color(color);
-            //  When the mouse is over a rectangle the rectangle is rendered as an outline
-            if (mouse_over)
-                sgl::draw_rectangle(left, bottom, width, height);
-            else
-                sgl::fill_rectangle(left, bottom, width, height);
-        }
-    };
-
-    class StarShape: public Shape {
-    protected:
-        //  Points locating the tips of the star points
-        sgl::Point p1, p2, p3, p4, p5;
-    public:
-        //  The constructor computes the relative locations of the star's tips
-        //  Since stars cannot be resized, the relative locations
-        //  are based on the star's size.  Since the user can move
-        //  a star to a new location within the viewport, the
-        //  constructor cannot precompute 
-        StarShape(double x, double y, double diameter, sgl::Color color):
-                         Shape(x, y, diameter, diameter, color),
-                         p1(0.0, diameter/2.0), 
-                         p2(p1.x*COS - p1.y*SIN, p1.x*SIN + p1.y*COS),
-                         p3(p2.x*COS - p2.y*SIN, p2.x*SIN + p2.y*COS),
-                         p4(p3.x*COS - p3.y*SIN, p3.x*SIN + p3.y*COS),
-                         p5(p4.x*COS - p4.y*SIN, p4.x*SIN + p4.y*COS) {}
-
-        //  The paint method computes the absolute locations of the star's 
-        //  tips based on the star's location
-        void paint() const override {
-            sgl::set_color(color);
-            double x_offset = left + width/2.0,
-                   y_offset = bottom + height/2.0;
-            sgl::draw_line(p1.x + x_offset, p1.y + y_offset, 
-                           p3.x + x_offset, p3.y + y_offset);
-            sgl::draw_line(p3.x + x_offset, p3.y + y_offset, 
-                           p5.x + x_offset, p5.y + y_offset);
-            sgl::draw_line(p5.x + x_offset, p5.y + y_offset, 
-                           p2.x + x_offset, p2.y + y_offset);
-            sgl::draw_line(p2.x + x_offset, p2.y + y_offset, 
-                           p4.x + x_offset, p4.y + y_offset);
-            sgl::draw_line(p4.x + x_offset, p4.y + y_offset, 
-                           p1.x + x_offset, p1.y + y_offset);
-
-            //  Incomment for accessory drawing
-            //set_color(LIGHT_GRAY);
-            //draw_rectangle(left, bottom, width, height);
-            //draw_circle(left + width/2.0, bottom + height/2.0, width/2.0);
-        }
-    };
-
+    sgl::Color color;
+    std::shared_ptr&lt;ColorSelectorPopup&gt; menu;
 public:
-    VariousObjectsWindow(): sgl::ObjectWindow("Graphical Objects", 100, 100, 800, 600,
-                                              0.0, 799.0, 0.0, 599.0) {
-        sgl::set_random_seed();  //  Use a seed based on system time
+    ColorBoxWindow(): sgl::Window("Color Box", 100, 100, 400, 300,
+        0, 100, 0, 100), color(sgl::RED), menu(std::make_shared&lt;ColorSelectorPopup&gt;(this)){}
+
+    void paint() override {
+        sgl::set_color(color);
+        sgl::fill_rectangle(25, 25, 50, 50);
     }
 
-    //  Provide a concrete paint that does nothing; the added shapes paint themselves
-    void paint() override {}  
-    
-    void mouse_pressed(double x, double y, sgl::MouseButton button) {
-        
-        if (button == sgl::MouseButton::Right) {
-            int shape = sgl::random(0, 2),               //  0 = circle, 1 = rectangle, 2 = star
-                obj_w = sgl::random(2, get_width()/5),   //  Random width
-                obj_h = sgl::random(2, get_height()/5);  //  Random height
-            double red = sgl::random(0, 1000)/1000.0,    //  Random color: red component
-                   green = sgl::random(0, 1000)/1000.0,  //  green component
-                   blue = sgl::random(0, 1000)/1000.0;   //  blue component
-            sgl::Color obj_color(red, green, blue);
-            if (shape == 0)
-                add(new CircularShape(x, y, obj_w, obj_color));
-            else if ( shape == 1 )
-                add(new RectangularShape(x, y, obj_w, obj_h, obj_color));
-            else
-                add(new StarShape(x, y, obj_w, obj_color));
-        }
-        sgl::ObjectWindow::mouse_pressed(x, y, button);
+    virtual void set_box_color(const sgl::Color&amp; c) {
+        color = c;
+        repaint();
+    }
+
+    virtual void set_color_green() {
+        color = sgl::GREEN;
+        repaint();
+    }
+
+    virtual void set_color_blue() {
+        color = sgl::BLUE;
+        repaint();
+    }
+
+    virtual void set_color_red() {
+        color = sgl::RED;
+        repaint();
+    }
+
+    virtual void set_color_black() {
+        color = sgl::BLACK;
+        repaint();
+    }
+
+    virtual void quit() {
+        exit(0);
+    }
+
+    //  Pressing the left mouse button lightens the box
+    //  Pressing the left mouse button and the shift key
+    //  darkens the box
+    void mouse_pressed(double, double, sgl::MouseButton) override {
+        double inc = (get_key_modifiers() == sgl::KeyModifier::SHIFT_KEY)
+                   ? -0.05 : 0.05;
+        color.red += inc;
+        color.green += inc;
+        color.blue += inc;
+        repaint();
     }
 };
 
 int main() {
-    sgl::run&lt;VariousObjectsWindow&gt;();
+    sgl::&lt;ColorBoxWindow&gt;();
 }
-</pre></div></div><br class="example-break" /><a class="xref" href="ch04s03.html#fig:objectwindowscreenshot" title="Figure 4.3. Object Window Application">Figure 4.3</a> provides a screenshot of 
-<a class="xref" href="ch04s03.html#prog:variousobjects.cpp" title="Example 4.2. Adding Various Graphical Objects">Example 4.2</a> in action.
-
-<div class="figure"><a id="fig:objectwindowscreenshot"></a><p class="title"><strong>Figure 4.3. Object Window Application</strong></p><div class="figure-contents"><div class="mediaobject" align="center"><img src="../figures/objectwindowscreenshot.png" align="middle" width="378" alt="Object Window Application" /></div></div></div><br class="figure-break" /><p>
-In <a class="xref" href="ch04s03.html#prog:variousobjects.cpp" title="Example 4.2. Adding Various Graphical Objects">Example 4.2</a> users can add various shapes (rectangles,
-circles, and five-pointed stars) by clicking the right mouse button.  The program generates
-a random instance of one of the three basis shapes.  The program determines the size and color 
-of the shape randomly as well.  The user can move a shape around within the window by
-pressing and holding the left mouse button and dragging it with the mouse.
-</p><p>
-Each shape corresponds to a subclass of <code class="varname">sgl::GraphicalObject</code> (indirectly
-via the application's <code class="varname">VariousObjectsWindow::Shape</code> class).  Observe how
-the implementations of these classes allow these shapes to respond differently to user
-input:
-</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Halos form around circles when the user moves the mouse cursor over them. </p></li><li class="listitem"><p>Rectangles become hollow when the user moves the mouse cursor over them. </p></li><li class="listitem"><p>Users can "lock" a circle making it immobile by pressing the
-<span class="emphasis"><em>L</em></span> key when the mouse cursor is over the circle object (pressing the 
-<span class="emphasis"><em>L</em></span> key again "unlocks" the object, allowing the user to once again be
-able to move it).
-</p></li></ul></div><p>
-When the mouse cursor is over a circle or star its shape becomes a cross symbol
-(<code class="varname">sgl::CursorShape::Crosshair</code>).  The
-<code class="varname">VariousObjectsWindow::Shape</code> class dictates this behavior.  The rectangle
-shape opts for the standard arrow cursor shape
-(<code class="varname">CursorShape::Right_arrow</code>).
+</pre></div></div><p><br class="example-break" />
+The <code class="varname">ColorSelectorPopup</code> menu is associated with
+the application's main window.  The constructor populates the menu
+with text labels and their associated actions.  Each
+action corresponds to a method within the ColorSelectorPopup class.
+In turn, each action method can call one or more methods in 
+the window object to
+change its state, in this case changing the color of the box.
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  3, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Receiving Mouse Input </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.4. Adding a Popup Menu</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  4, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.4. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.
