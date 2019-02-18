@@ -1,0 +1,5 @@
+1.  nmake clean
+2.  nmake run
+3.  nmake check
+4.  nmake clean
+

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: sgl Namespace Reference</title>
+<title>Simple Graphics Library: sgl Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Simple Graphics Library
+   &#160;<span id="projectnumber">0.9.5</span>
    </div>
+   <div id="projectbrief">SGL API</div>
   </td>
  </tr>
  </tbody>
@@ -95,6 +97,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html">PopupMenu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1ProceduralWindow.html">ProceduralWindow</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1SevenSegmentDigit.html">SevenSegmentDigit</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1Stopwatch.html">Stopwatch</a></td></tr>
@@ -106,8 +110,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aad4d310a7daf8eec908ed89e33baf7c2"><td class="memItemLeft" align="right" valign="top">typedef void(Window::*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2">WindowCallback</a>) ()</td></tr>
-<tr class="separator:aad4d310a7daf8eec908ed89e33baf7c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e0a7ed69a0298ca4c1350ea477177a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">MenuItemFunction</a> = std::function&lt; void()&gt;</td></tr>
+<tr class="separator:a93e0a7ed69a0298ca4c1350ea477177a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -236,6 +240,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3f6cec86d877c1f0debeb5f0e47dc368"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
 <tr class="memitem:a3f6cec86d877c1f0debeb5f0e47dc368"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a3f6cec86d877c1f0debeb5f0e47dc368">run</a> (Args &amp;&amp;... args)</td></tr>
 <tr class="separator:a3f6cec86d877c1f0debeb5f0e47dc368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3944077261bcf16411b17db3495563"><td class="memTemplParams" colspan="2">template&lt;typename T , typename... Args&gt; </td></tr>
+<tr class="memitem:a0d3944077261bcf16411b17db3495563"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a0d3944077261bcf16411b17db3495563">make_window</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a0d3944077261bcf16411b17db3495563"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7fa5dd7c034b299718e15fb1c1f1ae9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#aa7fa5dd7c034b299718e15fb1c1f1ae9">get_screen_width</a> ()</td></tr>
 <tr class="separator:aa7fa5dd7c034b299718e15fb1c1f1ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc896350c5f2b1812b41e7e2393067ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#adc896350c5f2b1812b41e7e2393067ac">get_screen_height</a> ()</td></tr>
@@ -250,10 +257,6 @@ Functions</h2></td></tr>
 <tr class="separator:a4dcffca097799e35975c49ad7153244b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a634cfccabe9536b831efa3c0bfddc4d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a634cfccabe9536b831efa3c0bfddc4d8">equals</a> (double d1, double d2, double delta)</td></tr>
 <tr class="separator:a634cfccabe9536b831efa3c0bfddc4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30daddbf9b4611e03097279ba0c6cb81"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a30daddbf9b4611e03097279ba0c6cb81">to_string</a> (int i)</td></tr>
-<tr class="separator:a30daddbf9b4611e03097279ba0c6cb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b50f7956a8f838a617463aa349f1bc2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a0b50f7956a8f838a617463aa349f1bc2">to_string</a> (double d)</td></tr>
-<tr class="separator:a0b50f7956a8f838a617463aa349f1bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a284020bd65a0cbef1807d1aee4370d58"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a284020bd65a0cbef1807d1aee4370d58">version</a> ()</td></tr>
 <tr class="separator:a284020bd65a0cbef1807d1aee4370d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50be80ef8f47bfc1454dbbe9888ba5cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a50be80ef8f47bfc1454dbbe9888ba5cd">create_window</a> (const std::string &amp;title, int x, int y, int width, int height)</td></tr>
@@ -278,71 +281,142 @@ Functions</h2></td></tr>
 <tr class="separator:aa24fbee857a19d2809c687246143d5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e56d03b9495ebc67306257ea3a669fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a3e56d03b9495ebc67306257ea3a669fd">set_window_title</a> (const std::string &amp;str)</td></tr>
 <tr class="separator:a3e56d03b9495ebc67306257ea3a669fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e6771b6966215e44a683f01a16c2ca"><td class="memItemLeft" align="right" valign="top"><a id="a01e6771b6966215e44a683f01a16c2ca"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BLACK</b> (0.0, 0.0, 0.0)</td></tr>
+<tr class="separator:a01e6771b6966215e44a683f01a16c2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab588bff17e12164f6bde73591b7e2ef5"><td class="memItemLeft" align="right" valign="top"><a id="ab588bff17e12164f6bde73591b7e2ef5"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RED</b> (1.0, 0.0, 0.0)</td></tr>
+<tr class="separator:ab588bff17e12164f6bde73591b7e2ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c31a6df70007b4185669cf51c146c57"><td class="memItemLeft" align="right" valign="top"><a id="a8c31a6df70007b4185669cf51c146c57"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GREEN</b> (0.0, 1.0, 0.0)</td></tr>
+<tr class="separator:a8c31a6df70007b4185669cf51c146c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e45efb1bf12da32d001b496b5b5dd71"><td class="memItemLeft" align="right" valign="top"><a id="a2e45efb1bf12da32d001b496b5b5dd71"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BLUE</b> (0.0, 0.0, 1.0)</td></tr>
+<tr class="separator:a2e45efb1bf12da32d001b496b5b5dd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a022822ec531ad5cac0f4f3f825851c2c"><td class="memItemLeft" align="right" valign="top"><a id="a022822ec531ad5cac0f4f3f825851c2c"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>YELLOW</b> (1.0, 1.0, 0.0)</td></tr>
+<tr class="separator:a022822ec531ad5cac0f4f3f825851c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07f4b46b29f06ca99ef7f8bfb29c3a8"><td class="memItemLeft" align="right" valign="top"><a id="ac07f4b46b29f06ca99ef7f8bfb29c3a8"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MAGENTA</b> (1.0, 0.0, 1.0)</td></tr>
+<tr class="separator:ac07f4b46b29f06ca99ef7f8bfb29c3a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90acdab78ca404287cfbab4ceac755f8"><td class="memItemLeft" align="right" valign="top"><a id="a90acdab78ca404287cfbab4ceac755f8"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CYAN</b> (0.0, 1.0, 1.0)</td></tr>
+<tr class="separator:a90acdab78ca404287cfbab4ceac755f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3034969303ed7f68ba22eb70111998a7"><td class="memItemLeft" align="right" valign="top"><a id="a3034969303ed7f68ba22eb70111998a7"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_RED</b> (0.75, 0.0, 0.0)</td></tr>
+<tr class="separator:a3034969303ed7f68ba22eb70111998a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab665b3e3033c808e2e1e7a23c7be9131"><td class="memItemLeft" align="right" valign="top"><a id="ab665b3e3033c808e2e1e7a23c7be9131"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_GREEN</b> (0.0, 0.75, 0.0)</td></tr>
+<tr class="separator:ab665b3e3033c808e2e1e7a23c7be9131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aafc80a7b244c3f4e6e86af9ae7ef2b"><td class="memItemLeft" align="right" valign="top"><a id="a2aafc80a7b244c3f4e6e86af9ae7ef2b"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_BLUE</b> (0.0, 0.0, 0.75)</td></tr>
+<tr class="separator:a2aafc80a7b244c3f4e6e86af9ae7ef2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8104b38d46631067e2234e0abbbb1e9"><td class="memItemLeft" align="right" valign="top"><a id="ae8104b38d46631067e2234e0abbbb1e9"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_RED</b> (1.0, 0.75, 0.75)</td></tr>
+<tr class="separator:ae8104b38d46631067e2234e0abbbb1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f871f64e708580a4d8ac812621c751a"><td class="memItemLeft" align="right" valign="top"><a id="a6f871f64e708580a4d8ac812621c751a"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_GREEN</b> (0.75, 1.0, 0.75)</td></tr>
+<tr class="separator:a6f871f64e708580a4d8ac812621c751a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970ce28e159ec3436ed0a4b9b38e011d"><td class="memItemLeft" align="right" valign="top"><a id="a970ce28e159ec3436ed0a4b9b38e011d"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_BLUE</b> (0.75, 0.75, 1.0)</td></tr>
+<tr class="separator:a970ce28e159ec3436ed0a4b9b38e011d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136083825d544a8fb10a7392fe772dc0"><td class="memItemLeft" align="right" valign="top"><a id="a136083825d544a8fb10a7392fe772dc0"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GRAY</b> (0.5, 0.5, 0.5)</td></tr>
+<tr class="separator:a136083825d544a8fb10a7392fe772dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c3ef8967e1b9aa7c9a8ca8c9ca3488"><td class="memItemLeft" align="right" valign="top"><a id="a45c3ef8967e1b9aa7c9a8ca8c9ca3488"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_GRAY</b> (0.8, 0.8, 0.8)</td></tr>
+<tr class="separator:a45c3ef8967e1b9aa7c9a8ca8c9ca3488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54fcf20c2943b13cf2209a56f06a26e"><td class="memItemLeft" align="right" valign="top"><a id="aa54fcf20c2943b13cf2209a56f06a26e"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_GRAY</b> (0.2, 0.2, 0.2)</td></tr>
+<tr class="separator:aa54fcf20c2943b13cf2209a56f06a26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a0c7e8d4c0aa8f8ce1083ee112e9aca"><td class="memItemLeft" align="right" valign="top"><a id="a7a0c7e8d4c0aa8f8ce1083ee112e9aca"></a>
+const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WHITE</b> (1.0, 1.0, 1.0)</td></tr>
+<tr class="separator:a7a0c7e8d4c0aa8f8ce1083ee112e9aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96bbcf7a7eb13da205d7f0b5cb760f73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a96bbcf7a7eb13da205d7f0b5cb760f73">procedural_default_paint_function</a> ()</td></tr>
+<tr class="separator:a96bbcf7a7eb13da205d7f0b5cb760f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170b4cbb51a01212fe90d14ddfab85b4"><td class="memItemLeft" align="right" valign="top"><a id="a170b4cbb51a01212fe90d14ddfab85b4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>procedural_default_mouse_pressed_function</b> (double, double, <a class="el" href="namespacesgl.html#a48dd58ea95178e315020d8ffd6e79358">MouseButton</a>)</td></tr>
+<tr class="separator:a170b4cbb51a01212fe90d14ddfab85b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a064b06dc4930e31109d531be5de8fd1c"><td class="memItemLeft" align="right" valign="top"><a id="a064b06dc4930e31109d531be5de8fd1c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>procedural_default_mouse_released_function</b> (double, double, <a class="el" href="namespacesgl.html#a48dd58ea95178e315020d8ffd6e79358">MouseButton</a>)</td></tr>
+<tr class="separator:a064b06dc4930e31109d531be5de8fd1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6367b13121dd417f9fce044aa7aa1cc"><td class="memItemLeft" align="right" valign="top"><a id="af6367b13121dd417f9fce044aa7aa1cc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>procedural_default_mouse_moved_function</b> (double, double)</td></tr>
+<tr class="separator:af6367b13121dd417f9fce044aa7aa1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5508a5ca7aff46c7c901495c033e5182"><td class="memItemLeft" align="right" valign="top"><a id="a5508a5ca7aff46c7c901495c033e5182"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>procedural_default_mouse_dragged_function</b> (double, double)</td></tr>
+<tr class="separator:a5508a5ca7aff46c7c901495c033e5182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bef08f68c4cd8159be746fd94da8a5f"><td class="memItemLeft" align="right" valign="top"><a id="a3bef08f68c4cd8159be746fd94da8a5f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>procedural_default_key_pressed_function</b> (int, double, double)</td></tr>
+<tr class="separator:a3bef08f68c4cd8159be746fd94da8a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a952b30a942a21c317015f4073c5574c3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#a952b30a942a21c317015f4073c5574c3">BLACK</a></td></tr>
-<tr class="separator:a952b30a942a21c317015f4073c5574c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a133c1096742ac4b7cd1fb75cd42fb92c"><td class="memItemLeft" align="right" valign="top"><a id="a133c1096742ac4b7cd1fb75cd42fb92c"></a>
+<tr class="memitem:ad1732a581f9727838d2a6b6d6475ef45"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesgl.html#ad1732a581f9727838d2a6b6d6475ef45">BLACK</a></td></tr>
+<tr class="separator:ad1732a581f9727838d2a6b6d6475ef45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f83bb66aa345694e517dd60b87e12d"><td class="memItemLeft" align="right" valign="top"><a id="aa8f83bb66aa345694e517dd60b87e12d"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RED</b></td></tr>
-<tr class="separator:a133c1096742ac4b7cd1fb75cd42fb92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef3b9a59ed1bef4d2c7efd3fd3dd2177"><td class="memItemLeft" align="right" valign="top"><a id="aef3b9a59ed1bef4d2c7efd3fd3dd2177"></a>
+<tr class="separator:aa8f83bb66aa345694e517dd60b87e12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0517d74cbeb99fedb84fdd5f8bc07b2"><td class="memItemLeft" align="right" valign="top"><a id="aa0517d74cbeb99fedb84fdd5f8bc07b2"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GREEN</b></td></tr>
-<tr class="separator:aef3b9a59ed1bef4d2c7efd3fd3dd2177"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45a05705e00f35da19e27aa389f025f3"><td class="memItemLeft" align="right" valign="top"><a id="a45a05705e00f35da19e27aa389f025f3"></a>
+<tr class="separator:aa0517d74cbeb99fedb84fdd5f8bc07b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273a811d8e9021d7545952bdbb880122"><td class="memItemLeft" align="right" valign="top"><a id="a273a811d8e9021d7545952bdbb880122"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BLUE</b></td></tr>
-<tr class="separator:a45a05705e00f35da19e27aa389f025f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ccf4b21edbbb65b8c9b7c430c2fdf8e"><td class="memItemLeft" align="right" valign="top"><a id="a3ccf4b21edbbb65b8c9b7c430c2fdf8e"></a>
+<tr class="separator:a273a811d8e9021d7545952bdbb880122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab0a7bddf5b263298da36ecc5b7a3bf"><td class="memItemLeft" align="right" valign="top"><a id="a6ab0a7bddf5b263298da36ecc5b7a3bf"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>YELLOW</b></td></tr>
-<tr class="separator:a3ccf4b21edbbb65b8c9b7c430c2fdf8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07a9cedfdd00ad8a0eb9bbe339a20aea"><td class="memItemLeft" align="right" valign="top"><a id="a07a9cedfdd00ad8a0eb9bbe339a20aea"></a>
+<tr class="separator:a6ab0a7bddf5b263298da36ecc5b7a3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f1b350c86b1bc58d4f2b496f3cb402"><td class="memItemLeft" align="right" valign="top"><a id="a18f1b350c86b1bc58d4f2b496f3cb402"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MAGENTA</b></td></tr>
-<tr class="separator:a07a9cedfdd00ad8a0eb9bbe339a20aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dd295abf1a8254ac205f1b4f2b10a3c"><td class="memItemLeft" align="right" valign="top"><a id="a6dd295abf1a8254ac205f1b4f2b10a3c"></a>
+<tr class="separator:a18f1b350c86b1bc58d4f2b496f3cb402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bb1510a4178c7559041517d50e21f07"><td class="memItemLeft" align="right" valign="top"><a id="a8bb1510a4178c7559041517d50e21f07"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CYAN</b></td></tr>
-<tr class="separator:a6dd295abf1a8254ac205f1b4f2b10a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c0f682370103c04aeac8acc655b7c7"><td class="memItemLeft" align="right" valign="top"><a id="a20c0f682370103c04aeac8acc655b7c7"></a>
+<tr class="separator:a8bb1510a4178c7559041517d50e21f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be22ef8f61ac89cb32ed2913f53e0e8"><td class="memItemLeft" align="right" valign="top"><a id="a4be22ef8f61ac89cb32ed2913f53e0e8"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WHITE</b></td></tr>
-<tr class="separator:a20c0f682370103c04aeac8acc655b7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44d3089159c8757a8eb42d8e779b253a"><td class="memItemLeft" align="right" valign="top"><a id="a44d3089159c8757a8eb42d8e779b253a"></a>
+<tr class="separator:a4be22ef8f61ac89cb32ed2913f53e0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2452cf7b6b323c2716e4fe4cb71a6ca"><td class="memItemLeft" align="right" valign="top"><a id="ad2452cf7b6b323c2716e4fe4cb71a6ca"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_RED</b></td></tr>
-<tr class="separator:a44d3089159c8757a8eb42d8e779b253a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dd64401547b72a955fed4fd27ca33ba"><td class="memItemLeft" align="right" valign="top"><a id="a9dd64401547b72a955fed4fd27ca33ba"></a>
+<tr class="separator:ad2452cf7b6b323c2716e4fe4cb71a6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c41655933321acfd3fa5cae22a08bf2"><td class="memItemLeft" align="right" valign="top"><a id="a9c41655933321acfd3fa5cae22a08bf2"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_GREEN</b></td></tr>
-<tr class="separator:a9dd64401547b72a955fed4fd27ca33ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfdff4730c8f66dfcf7da2b57e8e7b80"><td class="memItemLeft" align="right" valign="top"><a id="abfdff4730c8f66dfcf7da2b57e8e7b80"></a>
+<tr class="separator:a9c41655933321acfd3fa5cae22a08bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e6f1432afaa698f035ee5d489aecd1f"><td class="memItemLeft" align="right" valign="top"><a id="a8e6f1432afaa698f035ee5d489aecd1f"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_BLUE</b></td></tr>
-<tr class="separator:abfdff4730c8f66dfcf7da2b57e8e7b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac95eafb3e35934c471cdcf0629ce2185"><td class="memItemLeft" align="right" valign="top"><a id="ac95eafb3e35934c471cdcf0629ce2185"></a>
+<tr class="separator:a8e6f1432afaa698f035ee5d489aecd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5fac6cacdec16bd3d852ba9c157b0b"><td class="memItemLeft" align="right" valign="top"><a id="aeb5fac6cacdec16bd3d852ba9c157b0b"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_RED</b></td></tr>
-<tr class="separator:ac95eafb3e35934c471cdcf0629ce2185"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a888450f0e5df21bb9bc8515d608257ac"><td class="memItemLeft" align="right" valign="top"><a id="a888450f0e5df21bb9bc8515d608257ac"></a>
+<tr class="separator:aeb5fac6cacdec16bd3d852ba9c157b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1fd6ed4bb941ee5589b4fe7495e213d"><td class="memItemLeft" align="right" valign="top"><a id="ad1fd6ed4bb941ee5589b4fe7495e213d"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_GREEN</b></td></tr>
-<tr class="separator:a888450f0e5df21bb9bc8515d608257ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdc04cb0c0d8621cc3b4e4103d3f5ce0"><td class="memItemLeft" align="right" valign="top"><a id="acdc04cb0c0d8621cc3b4e4103d3f5ce0"></a>
+<tr class="separator:ad1fd6ed4bb941ee5589b4fe7495e213d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8b30a86140622760eb2bfbffd4801e"><td class="memItemLeft" align="right" valign="top"><a id="a6c8b30a86140622760eb2bfbffd4801e"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_BLUE</b></td></tr>
-<tr class="separator:acdc04cb0c0d8621cc3b4e4103d3f5ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2c8a7feaff6d9b24230de75dc5b333b"><td class="memItemLeft" align="right" valign="top"><a id="ae2c8a7feaff6d9b24230de75dc5b333b"></a>
+<tr class="separator:a6c8b30a86140622760eb2bfbffd4801e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1432efd2ce416ee013a0bc2d13cc8c"><td class="memItemLeft" align="right" valign="top"><a id="a8f1432efd2ce416ee013a0bc2d13cc8c"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GRAY</b></td></tr>
-<tr class="separator:ae2c8a7feaff6d9b24230de75dc5b333b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ce45f756547347660332b0a82a0fd3b"><td class="memItemLeft" align="right" valign="top"><a id="a6ce45f756547347660332b0a82a0fd3b"></a>
+<tr class="separator:a8f1432efd2ce416ee013a0bc2d13cc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c28d695622c571b58d4e3924de43331"><td class="memItemLeft" align="right" valign="top"><a id="a1c28d695622c571b58d4e3924de43331"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LIGHT_GRAY</b></td></tr>
-<tr class="separator:a6ce45f756547347660332b0a82a0fd3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64fcff4d3d1111ea37b39ffaf69aa454"><td class="memItemLeft" align="right" valign="top"><a id="a64fcff4d3d1111ea37b39ffaf69aa454"></a>
+<tr class="separator:a1c28d695622c571b58d4e3924de43331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4458b705eb890b7c8cd638d113a1c006"><td class="memItemLeft" align="right" valign="top"><a id="a4458b705eb890b7c8cd638d113a1c006"></a>
 const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>DARK_GRAY</b></td></tr>
-<tr class="separator:a64fcff4d3d1111ea37b39ffaf69aa454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a4458b705eb890b7c8cd638d113a1c006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2368a6783238ebbb50fd088fd9dc17"><td class="memItemLeft" align="right" valign="top"><a id="a4b2368a6783238ebbb50fd088fd9dc17"></a>
+const int&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_WINDOWS</b> = 10</td></tr>
+<tr class="separator:a4b2368a6783238ebbb50fd088fd9dc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>All client accessible classes, functions, and constants reside in the sgl namespace. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="aad4d310a7daf8eec908ed89e33baf7c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad4d310a7daf8eec908ed89e33baf7c2">&#9670;&nbsp;</a></span>WindowCallback</h2>
+<a id="a93e0a7ed69a0298ca4c1350ea477177a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e0a7ed69a0298ca4c1350ea477177a">&#9670;&nbsp;</a></span>MenuItemFunction</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(Window::* sgl::WindowCallback) ()</td>
+          <td class="memname">using <a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">sgl::MenuItemFunction</a> = typedef std::function&lt;void()&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -479,7 +553,7 @@ const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class=
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a graphics window for the SGL's procedural interface. Clients need not derive a custom <a class="el" href="classsgl_1_1Window.html">Window</a> class and override methods. Clients using the procedural interface control the application's state through global variables rather than instance variables. Clients must call this function before registering any callbacks calling <code>run_window</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Creates a graphics window for the SGL's procedural interface. Clients need not derive a custom <a class="el" href="classsgl_1_1Window.html">Window</a> class and override methods. Clients using the procedural interface control the application's state through global variables rather than instance variables. Clients must call this function before registering any callbacks and before calling <code>run_window</code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">title</td><td>the text to appear in the window's title bar </td></tr>
     <tr><td class="paramname">x</td><td>the x component of the (x, y) location of the window's left-top corner </td></tr>
@@ -1275,6 +1349,61 @@ const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class=
 
 </div>
 </div>
+<a id="a0d3944077261bcf16411b17db3495563"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3944077261bcf16411b17db3495563">&#9670;&nbsp;</a></span>make_window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T * sgl::make_window </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Creates an SGL window of type T passing the arguments found in the Args parameter to the window's constructor. Does NOT call the window's run method to start the application. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the type of SGL window to create </td></tr>
+    <tr><td class="paramname">Args</td><td>the argument pack to pass to the window's constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>the instantiated parameters to pass to the window's constructor</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Creates an SGL window of type T passing the arguments found in the Args parameter to the window's constructor. Does NOT call the window's run method to start the application. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the type of SGL window to create </td></tr>
+    <tr><td class="paramname">Args</td><td>the argument pack to pass to the window's constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>the instantiated parameters to pass to the window's constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a pointer to the newly created window object. </dd></dl>
+
+</div>
+</div>
 <a id="a4dcffca097799e35975c49ad7153244b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4dcffca097799e35975c49ad7153244b">&#9670;&nbsp;</a></span>pause()</h2>
 
@@ -1297,6 +1426,37 @@ const <a class="el" href="classsgl_1_1Color.html">Color</a>&#160;</td><td class=
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
+
+</div>
+</div>
+<a id="a96bbcf7a7eb13da205d7f0b5cb760f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96bbcf7a7eb13da205d7f0b5cb760f73">&#9670;&nbsp;</a></span>procedural_default_paint_function()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sgl::procedural_default_paint_function </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converts an integer to a string so it can be displayed with draw_text. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>the integer to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the string representation of i Converts a double to a string so it can be displayed with draw_text. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the double to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the string representation of d </dd></dl>
 
 </div>
 </div>
@@ -1799,56 +1959,6 @@ template&lt;typename T , typename... Args&gt; </div>
 
 </div>
 </div>
-<a id="a30daddbf9b4611e03097279ba0c6cb81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30daddbf9b4611e03097279ba0c6cb81">&#9670;&nbsp;</a></span>to_string() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string sgl::to_string </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Converts an integer to a string so it can be displayed with draw_text. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>the integer to convert </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the string representation of i </dd></dl>
-
-</div>
-</div>
-<a id="a0b50f7956a8f838a617463aa349f1bc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b50f7956a8f838a617463aa349f1bc2">&#9670;&nbsp;</a></span>to_string() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string sgl::to_string </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>d</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Converts a double to a string so it can be displayed with draw_text. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">d</td><td>the double to convert </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>the string representation of d </dd></dl>
-
-</div>
-</div>
 <a id="aa65a330a9063ca6794f1766f9ea43f22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa65a330a9063ca6794f1766f9ea43f22">&#9670;&nbsp;</a></span>update_window()</h2>
 
@@ -1881,19 +1991,32 @@ template&lt;typename T , typename... Args&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the SGL version number of this library. </p>
+<p>Converts an integer to a string so it can be displayed with draw_text. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>the integer to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the string representation of i Converts a double to a string so it can be displayed with draw_text. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>the double to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the string representation of d Returns the SGL version number of this library. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a952b30a942a21c317015f4073c5574c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a952b30a942a21c317015f4073c5574c3">&#9670;&nbsp;</a></span>BLACK</h2>
+<a id="ad1732a581f9727838d2a6b6d6475ef45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1732a581f9727838d2a6b6d6475ef45">&#9670;&nbsp;</a></span>BLACK</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classsgl_1_1Color.html">Color</a> sgl::BLACK</td>
+          <td class="memname">const <a class="el" href="classsgl_1_1Color.html">Color</a> sgl::BLACK(0.0, 0.0, 0.0)</td>
         </tr>
       </table>
 </div><div class="memdoc">

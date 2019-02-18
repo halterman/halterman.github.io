@@ -1,12 +1,15 @@
 var searchData=
 [
-  ['paint',['paint',['../classsgl_1_1GraphicalObject.html#a33e2c8f89c2e7550e19d555ecdb0d132',1,'sgl::GraphicalObject::paint()'],['../classsgl_1_1Window.html#adceefccaab14e715d5c7910c7428d10b',1,'sgl::Window::paint()'],['../classsgl_1_1CompositeObject.html#a381ae6fa5937f06c0be151225e8778c2',1,'sgl::CompositeObject::paint()'],['../classsgl_1_1BitmapObject.html#adc5658bfdc40f4de59f613dc9e2821de',1,'sgl::BitmapObject::paint()'],['../classsgl_1_1SevenSegmentDigit.html#a0c93ba99ebe4b4aa6ec2dc047b3ebe69',1,'sgl::SevenSegmentDigit::paint()'],['../classsgl_1_1DisplayDigit.html#adf6b3fbeba0d83f117c315e7a900e261',1,'sgl::DisplayDigit::paint()'],['../classsgl_1_1DoubleDigit.html#a7171299f5a8d7de135f9ee931f45beee',1,'sgl::DoubleDigit::paint()'],['../classsgl_1_1Multidigit.html#ab84484e3085fd36865391150f163dfd5',1,'sgl::Multidigit::paint()'],['../classsgl_1_1TimeDisplay.html#a1ee03eaefb47bb3e2e7468cc7df45ae6',1,'sgl::TimeDisplay::paint()']]],
-  ['paint_5fall',['paint_all',['../classsgl_1_1Window.html#a1c00d51e0cd932fae4d7cfaea3edffc9',1,'sgl::Window']]],
-  ['paint_5fwithout_5fleading_5funits',['paint_without_leading_units',['../classsgl_1_1TimeDisplay.html#afb6686d38608b74f9cb41f15099af9c8',1,'sgl::TimeDisplay']]],
-  ['pause',['pause',['../namespacesgl.html#a4dcffca097799e35975c49ad7153244b',1,'sgl']]],
-  ['point',['Point',['../structsgl_1_1Point.html#a8f4e9e0632ec8f6aa7d38660038b09c7',1,'sgl::Point::Point(double x, double y)'],['../structsgl_1_1Point.html#a510cd2efc6ff261970182462f220e1ba',1,'sgl::Point::Point()']]],
-  ['popupmenu',['PopupMenu',['../classsgl_1_1PopupMenu.html#a5c6937332cbcb1360251495cd7fdec69',1,'sgl::PopupMenu']]],
-  ['postpaint',['postpaint',['../classsgl_1_1Window.html#adda1974ce7d7a2635bb63e6d325399b5',1,'sgl::Window::postpaint()'],['../classsgl_1_1ObjectWindow.html#a3c4af46d7f1cf41797ad9c58e0aff5f1',1,'sgl::ObjectWindow::postpaint()'],['../classsgl_1_1OGLWindow.html#a0a8491b06b840fe56fec915a59000ecd',1,'sgl::OGLWindow::postpaint()']]],
-  ['prepaint',['prepaint',['../classsgl_1_1Window.html#a326929cbfda4092a3a7bcb72937debe2',1,'sgl::Window::prepaint()'],['../classsgl_1_1ObjectWindow.html#a00ba8178298f4d59952753b44d5fa4ae',1,'sgl::ObjectWindow::prepaint()'],['../classsgl_1_1OGLWindow.html#a4537a8958e88ad37cef5c9de81788b1e',1,'sgl::OGLWindow::prepaint()']]],
-  ['process_5fmenu_5fevents',['process_menu_events',['../classsgl_1_1PopupMenu.html#a68cb10c3e2e314936e84b9247e7a4844',1,'sgl::PopupMenu']]]
+  ['random',['random',['../namespacesgl.html#aca349d8d1c55fe62cef4a03e243f1b49',1,'sgl::random(int begin, int end)'],['../namespacesgl.html#a74ff441f9c2eb8fb49eb97f03620d913',1,'sgl::random(int n)']]],
+  ['read_5fbmp_5ffile',['read_BMP_file',['../classsgl_1_1Pixmap.html#aedde723c2bf220060c518859379fabc3',1,'sgl::Pixmap']]],
+  ['remove',['remove',['../classsgl_1_1ObjectWindow.html#a92e6857ad8e63db97c4eb35875f8c643',1,'sgl::ObjectWindow']]],
+  ['remove_5fall',['remove_all',['../classsgl_1_1ObjectWindow.html#a266fd98ddc05055145bf40d5707bf594',1,'sgl::ObjectWindow']]],
+  ['remove_5fmenu_5fitem',['remove_menu_item',['../classsgl_1_1PopupMenu.html#acb9af736a51c4baf7c37735341c8f71e',1,'sgl::PopupMenu']]],
+  ['repaint',['repaint',['../classsgl_1_1Window.html#a6c06740e9418cc9c3e0bba6a23c2bd09',1,'sgl::Window']]],
+  ['replace_5fmenu_5fitem',['replace_menu_item',['../classsgl_1_1PopupMenu.html#a509071d969685c375e79d8c156f2dc6d',1,'sgl::PopupMenu']]],
+  ['reset',['reset',['../classsgl_1_1Stopwatch.html#a930dfc4c81a7d54f8d7c4ab95b88284b',1,'sgl::Stopwatch']]],
+  ['resize',['resize',['../classsgl_1_1SevenSegmentDigit.html#a24b18f99bcb9ffae3ffcf6aa5ca5f5c8',1,'sgl::SevenSegmentDigit::resize()'],['../classsgl_1_1DisplayDigit.html#a409dc14cde6f89bbe7923c48b0138338',1,'sgl::DisplayDigit::resize()'],['../classsgl_1_1DoubleDigit.html#a530531dab56ff9abd66c6103fabadec3',1,'sgl::DoubleDigit::resize()'],['../classsgl_1_1Multidigit.html#a5e6a4ff3fac987d847c88e7f461ef167',1,'sgl::Multidigit::resize()'],['../classsgl_1_1TimeDisplay.html#a8846994cef1d850fe4ce695057493af0',1,'sgl::TimeDisplay::resize()']]],
+  ['resized',['resized',['../classsgl_1_1Window.html#a67ac1d50afe7ac1faf96c4c1b4b570c1',1,'sgl::Window']]],
+  ['run',['run',['../namespacesgl.html#a3f6cec86d877c1f0debeb5f0e47dc368',1,'sgl']]],
+  ['run_5fwindow',['run_window',['../namespacesgl.html#a13d895abdccb4ba60091e3a2c133d2c7',1,'sgl']]]
 ];

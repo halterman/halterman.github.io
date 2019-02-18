@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['key_5fmods',['key_mods',['../classsgl_1_1Window.html#a10b0956de4e5b1c3d7807ca383ed3c3b',1,'sgl::Window']]],
-  ['key_5fpressed',['key_pressed',['../classsgl_1_1GraphicalObject.html#a8eeb17769e6b403086f6a7e216622ddc',1,'sgl::GraphicalObject::key_pressed()'],['../classsgl_1_1Window.html#afaef32165157fbea2a9a23977176ded0',1,'sgl::Window::key_pressed()'],['../classsgl_1_1ObjectWindow.html#a04d7e5ac1f9117bda721ff2f419b949a',1,'sgl::ObjectWindow::key_pressed()']]],
-  ['keymodifier',['KeyModifier',['../namespacesgl.html#a12c8eb3b2f9ea98b9055d83aa074fb2b',1,'sgl']]]
+  ['leading_5funits',['leading_units',['../classsgl_1_1TimeDisplay.html#a026f52d94e6c325e9181f8c2685f4896',1,'sgl::TimeDisplay']]],
+  ['leading_5fzero',['leading_zero',['../classsgl_1_1DoubleDigit.html#abaf179f7c0f4771839cb345b41bb425b',1,'sgl::DoubleDigit']]],
+  ['leading_5fzeros',['leading_zeros',['../classsgl_1_1Multidigit.html#a43099b5a62ec731093e3ea3d99e8e236',1,'sgl::Multidigit']]],
+  ['led',['led',['../classsgl_1_1DisplayDigit.html#a2ffd492365f38ded19182c8744f280e1',1,'sgl::DisplayDigit']]],
+  ['left',['left',['../classsgl_1_1GraphicalObject.html#ac8a4b472a588e402c765e4fae384bd08',1,'sgl::GraphicalObject']]]
 ];

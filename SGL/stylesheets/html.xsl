@@ -64,9 +64,9 @@
     <i>Copyright</i> <font>&#160; &#169;</font>  <i>2019 Richard L.
     Halterman</i></td>
         <td width="20%" align="center">
-    <font color="red">Version 0.9.1</font></td>
+    <font color="red">Version 0.9.5</font></td>
         <td width="40%" align="right">
-    <font color="red">February  3, 2019</font></td></tr>
+    <font color="red">February 17, 2019</font></td></tr>
         </table>
     
 </xsl:template>

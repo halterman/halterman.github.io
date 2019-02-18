@@ -19,22 +19,23 @@ protected:
     //  Access to this custom popup menu class is restricted to
     //  code within this ColorBoxWindow class.
     class ColorSelectorPopup : public sgl::PopupMenu {
+        ColorBoxWindow *win;
     public:
         //  The constructor associates a menu item with an action
         //  to perform.  Each action is a method within this class.
-        ColorSelectorPopup(ColorBoxWindow *win) : sgl::PopupMenu(win) {
-            add_menu_item("Red", &amp;ColorBoxWindow::set_color_red);
-            add_menu_item("Green", &amp;ColorBoxWindow::set_color_green);
-            add_menu_item("Blue", &amp;ColorBoxWindow::set_color_blue);
-            add_menu_item("Black", &amp;ColorBoxWindow::set_color_black);
-            add_menu_item("Quit", &amp;ColorBoxWindow::quit);
+        ColorSelectorPopup(ColorBoxWindow *parent) : win(parent) {
+            add_menu_item("Red", [this]() { win-&gt;set_color_red(); });
+            add_menu_item("Green", [this]() { win-&gt;set_color_green(); });
+            add_menu_item("Blue", [this]() { win-&gt;set_color_blue(); });
+            add_menu_item("Black", [this]() { win-&gt;set_color_black(); });
+            add_menu_item("Quit", [this]() { win-&gt;quit(); });
         }
     };
     sgl::Color color;
-    std::shared_ptr&lt;ColorSelectorPopup&gt; menu;
+    ColorSelectorPopup menu;
 public:
     ColorBoxWindow(): sgl::Window("Color Box", 100, 100, 400, 300,
-        0, 100, 0, 100), color(sgl::RED), menu(std::make_shared&lt;ColorSelectorPopup&gt;(this)){}
+        0, 100, 0, 100), color(sgl::RED), menu(this){}
 
     void paint() override {
         sgl::set_color(color);
@@ -84,7 +85,7 @@ public:
 };
 
 int main() {
-    sgl::&lt;ColorBoxWindow&gt;();
+    sgl::run&lt;ColorBoxWindow&gt;();
 }
 </pre></div></div><p><br class="example-break" />
 The <code class="varname">ColorSelectorPopup</code> menu is associated with
@@ -95,7 +96,7 @@ In turn, each action method can call one or more methods in
 the window object to
 change its state, in this case changing the color of the box.
 </p></div><hr xmlns="" /><table xmlns="" border="0" width="100%"><tr><td width="40%" align="left"><i>Copyright</i><font>  ©</font><i>2019 Richard L.
-    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.1</font></td><td width="40%" align="right"><font color="red">February  5, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.4. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
+    Halterman</i></td><td width="20%" align="center"><font color="red">Version 0.9.5</font></td><td width="40%" align="right"><font color="red">February 17, 2019</font></td></tr></table><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch04s02.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ch04.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">4.2. Adding Graphical Objects </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a> | <a accesskey="t" href="bk01-toc.html">ToC</a></td><td width="40%" align="right" valign="top"> 4.4. Animation</td></tr></table></div><div xmlns="" id="customfooter"><a href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" border="0" src="http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png" /></a>
 	This work is licensed under a 
         <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">
         Creative Commons License</a>.

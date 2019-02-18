@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['add',['add',['../classsgl_1_1ObjectWindow.html#a51cd85d96c94db3c52906366d3a29c66',1,'sgl::ObjectWindow::add()'],['../classsgl_1_1CompositeObject.html#a614130bf1c74a66be1cfd4fbab37efdb',1,'sgl::CompositeObject::add()']]]
+  ['begin',['begin',['../classsgl_1_1ObjectWindow.html#a0bfcb60d80683bcd8fb515cac8d2ea95',1,'sgl::ObjectWindow']]],
+  ['bitmapobject',['BitmapObject',['../classsgl_1_1BitmapObject.html#aa6f21df31a563e7da84020ff29d18f41',1,'sgl::BitmapObject']]]
 ];

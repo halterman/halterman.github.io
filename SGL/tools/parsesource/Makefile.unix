@@ -1,0 +1,17 @@
+
+all: parsecode
+
+parsecode: parsecode.cpp
+	g++ -Wall -o parsecode parsecode.cpp
+
+clean:
+	/bin/rm -f parsecode
+	/bin/rm -f Chap*/*
+	/bin/rm -f *.o
+
+run: parsecode
+	./parsecode ../../sgl.xml 
+
+check: parsecode
+	g++ -Wall -c ./Chap*/*.cpp
+	/bin/rm -f *.o

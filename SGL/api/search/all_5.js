@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['elapsed',['elapsed',['../classsgl_1_1Stopwatch.html#a782e5e6dc7dbfb7670aa3084e2d8e3cd',1,'sgl::Stopwatch']]],
-  ['end',['end',['../classsgl_1_1ObjectWindow.html#aca49314396d7441f814f772d8b6c8d3f',1,'sgl::ObjectWindow']]],
-  ['end_5ftime',['end_time',['../classsgl_1_1Stopwatch.html#a09b4961b852a1a7f3d84d051aa646036',1,'sgl::Stopwatch']]],
-  ['equals',['equals',['../namespacesgl.html#a634cfccabe9536b831efa3c0bfddc4d8',1,'sgl']]],
-  ['execute_5fhandler',['execute_handler',['../classsgl_1_1PopupMenu.html#aeb020374cfc5432c9e807f8370bfbbcd',1,'sgl::PopupMenu']]]
+  ['fill_5fcircle',['fill_circle',['../namespacesgl.html#a4f3653ca3e6b6358c3c6644f373b42ff',1,'sgl']]],
+  ['fill_5fpolygon',['fill_polygon',['../namespacesgl.html#a6afba1be6e58a6975b57cadda449512b',1,'sgl::fill_polygon(const std::vector&lt; Point &gt; &amp;pts)'],['../namespacesgl.html#a3d73f0a20f76db9a5d2e0d3ba848f7e2',1,'sgl::fill_polygon(const Point *pts, int n)']]],
+  ['fill_5frectangle',['fill_rectangle',['../namespacesgl.html#a787166a6b1a9b2232afa317f800bee8b',1,'sgl']]]
 ];

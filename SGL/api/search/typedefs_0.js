@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['windowcallback',['WindowCallback',['../namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2',1,'sgl']]]
+  ['menuitemfunction',['MenuItemFunction',['../namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a',1,'sgl']]]
 ];

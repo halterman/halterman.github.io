@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: sgl::PopupMenu Class Reference</title>
+<title>Simple Graphics Library: sgl::PopupMenu Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Simple Graphics Library
+   &#160;<span id="projectnumber">0.9.5</span>
    </div>
+   <div id="projectbrief">SGL API</div>
   </td>
  </tr>
  </tbody>
@@ -74,14 +76,6 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="sgl_8h_source.html">sgl.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for sgl::PopupMenu:</div>
-<div class="dyncontent">
-<div class="center"><img src="classsgl_1_1PopupMenu__coll__graph.png" border="0" usemap="#sgl_1_1PopupMenu_coll__map" alt="Collaboration graph"/></div>
-<map name="sgl_1_1PopupMenu_coll__map" id="sgl_1_1PopupMenu_coll__map">
-<area shape="rect" id="node2" href="classsgl_1_1Window.html" title="sgl::Window" alt="" coords="16,5,111,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -90,36 +84,38 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5c6937332cbcb1360251495cd7fdec69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a5c6937332cbcb1360251495cd7fdec69">PopupMenu</a> (<a class="el" href="classsgl_1_1Window.html">Window</a> *win)</td></tr>
-<tr class="separator:a5c6937332cbcb1360251495cd7fdec69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdf3db736f1d18137fc64b2f15087b34"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#afdf3db736f1d18137fc64b2f15087b34">~PopupMenu</a> ()</td></tr>
-<tr class="separator:afdf3db736f1d18137fc64b2f15087b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbaff2b463eeb8388f2793d826843b57"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#adbaff2b463eeb8388f2793d826843b57">_add_menu_item</a> (const std::string &amp;item, <a class="el" href="namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2">WindowCallback</a> func)</td></tr>
-<tr class="separator:adbaff2b463eeb8388f2793d826843b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb6b31cd3ce560c4c37aa1860041022"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#aceb6b31cd3ce560c4c37aa1860041022">_replace_menu_item</a> (const std::string &amp;old_name, const std::string &amp;new_name, <a class="el" href="namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2">WindowCallback</a> func)</td></tr>
-<tr class="separator:aceb6b31cd3ce560c4c37aa1860041022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a772d3b3d26c5013be20ddd7de434b2bc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a772d3b3d26c5013be20ddd7de434b2bc">remove_menu_item</a> (const std::string &amp;item)</td></tr>
-<tr class="separator:a772d3b3d26c5013be20ddd7de434b2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb020374cfc5432c9e807f8370bfbbcd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#aeb020374cfc5432c9e807f8370bfbbcd">execute_handler</a> (int n)</td></tr>
-<tr class="separator:aeb020374cfc5432c9e807f8370bfbbcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af400161db194bd9f11ab62262a3dc3cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#af400161db194bd9f11ab62262a3dc3cb">PopupMenu</a> ()</td></tr>
+<tr class="separator:af400161db194bd9f11ab62262a3dc3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae13556683463212dd97e1acf90277fca"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#ae13556683463212dd97e1acf90277fca">~PopupMenu</a> ()</td></tr>
+<tr class="separator:ae13556683463212dd97e1acf90277fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab795bcb59aec1873532a6394ffbdcfe5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#ab795bcb59aec1873532a6394ffbdcfe5">add_menu_item</a> (const std::string &amp;item, <a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">MenuItemFunction</a> func)</td></tr>
+<tr class="separator:ab795bcb59aec1873532a6394ffbdcfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509071d969685c375e79d8c156f2dc6d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a509071d969685c375e79d8c156f2dc6d">replace_menu_item</a> (const std::string &amp;old_name, const std::string &amp;new_name, <a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">MenuItemFunction</a> func)</td></tr>
+<tr class="separator:a509071d969685c375e79d8c156f2dc6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb9af736a51c4baf7c37735341c8f71e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#acb9af736a51c4baf7c37735341c8f71e">remove_menu_item</a> (const std::string &amp;item)</td></tr>
+<tr class="separator:acb9af736a51c4baf7c37735341c8f71e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e9f02c3237fd5232a4601a5744b705"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a03e9f02c3237fd5232a4601a5744b705">execute_handler</a> (int n)</td></tr>
+<tr class="separator:a03e9f02c3237fd5232a4601a5744b705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14c2cfc269291c3533832abce7b1679c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a14c2cfc269291c3533832abce7b1679c">activate</a> ()</td></tr>
+<tr class="separator:a14c2cfc269291c3533832abce7b1679c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:a68cb10c3e2e314936e84b9247e7a4844"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a68cb10c3e2e314936e84b9247e7a4844">process_menu_events</a> (int option)</td></tr>
-<tr class="separator:a68cb10c3e2e314936e84b9247e7a4844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53b42dd43cda003c366dbc79cb09c422"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a53b42dd43cda003c366dbc79cb09c422">process_menu_events</a> (int option)</td></tr>
+<tr class="separator:a53b42dd43cda003c366dbc79cb09c422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa4927bb95e74682d58389196bff00444"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classsgl_1_1Window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#aa4927bb95e74682d58389196bff00444">window</a></td></tr>
-<tr class="separator:aa4927bb95e74682d58389196bff00444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af925ae64d539a41c2ea90ffbbe8445"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a7af925ae64d539a41c2ea90ffbbe8445">index</a></td></tr>
+<tr class="separator:a7af925ae64d539a41c2ea90ffbbe8445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e35046b6d533fa66bca99a05070736"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsgl_1_1PopupMenu_1_1MenuItem.html">MenuItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsgl_1_1PopupMenu.html#a75e35046b6d533fa66bca99a05070736">items</a></td></tr>
 <tr class="separator:a75e35046b6d533fa66bca99a05070736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements a popup menu. Each popup menu must be associated with a particular window. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5c6937332cbcb1360251495cd7fdec69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c6937332cbcb1360251495cd7fdec69">&#9670;&nbsp;</a></span>PopupMenu()</h2>
+<a id="af400161db194bd9f11ab62262a3dc3cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af400161db194bd9f11ab62262a3dc3cb">&#9670;&nbsp;</a></span>PopupMenu()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,8 +123,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">sgl::PopupMenu::PopupMenu </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classsgl_1_1Window.html">Window</a> *&#160;</td>
-          <td class="paramname"><em>win</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -137,8 +132,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afdf3db736f1d18137fc64b2f15087b34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdf3db736f1d18137fc64b2f15087b34">&#9670;&nbsp;</a></span>~PopupMenu()</h2>
+<a id="ae13556683463212dd97e1acf90277fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae13556683463212dd97e1acf90277fca">&#9670;&nbsp;</a></span>~PopupMenu()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +142,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual sgl::PopupMenu::~PopupMenu </td>
+          <td class="memname">sgl::PopupMenu::~PopupMenu </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -164,8 +159,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adbaff2b463eeb8388f2793d826843b57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbaff2b463eeb8388f2793d826843b57">&#9670;&nbsp;</a></span>_add_menu_item()</h2>
+<a id="a14c2cfc269291c3533832abce7b1679c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14c2cfc269291c3533832abce7b1679c">&#9670;&nbsp;</a></span>activate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +169,33 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void sgl::PopupMenu::_add_menu_item </td>
+          <td class="memname">void sgl::PopupMenu::activate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Make this popup menu the active popup for its window. </p><dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
+
+</div>
+</div>
+<a id="ab795bcb59aec1873532a6394ffbdcfe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab795bcb59aec1873532a6394ffbdcfe5">&#9670;&nbsp;</a></span>add_menu_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sgl::PopupMenu::add_menu_item </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>item</em>, </td>
@@ -182,7 +203,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2">WindowCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">MenuItemFunction</a>&#160;</td>
           <td class="paramname"><em>func</em>&#160;</td>
         </tr>
         <tr>
@@ -197,7 +218,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds specifies which method to call for a given menu item. Clients ordinarily will use the add_menu_item macro (no leading underscore) so a messy type cast is no necessary. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Specifies which method to call for a given menu item. Clients ordinarily will use the add_menu_item macro so a messy type cast is no necessary. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">item</td><td>a string listed for the menu choice </td></tr>
     <tr><td class="paramname">func</td><td>a method to call when the user selects the given menu item </td></tr>
@@ -208,8 +229,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aceb6b31cd3ce560c4c37aa1860041022"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceb6b31cd3ce560c4c37aa1860041022">&#9670;&nbsp;</a></span>_replace_menu_item()</h2>
+<a id="a03e9f02c3237fd5232a4601a5744b705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e9f02c3237fd5232a4601a5744b705">&#9670;&nbsp;</a></span>execute_handler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +239,100 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void sgl::PopupMenu::_replace_menu_item </td>
+          <td class="memname">void sgl::PopupMenu::execute_handler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Invokes the proper handler when the user selects an item in a popup menu. Client ordinarily do not call this method directly, nor do they override it. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>an index into the table of handlers maintained by this popup menu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
+
+</div>
+</div>
+<a id="a53b42dd43cda003c366dbc79cb09c422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53b42dd43cda003c366dbc79cb09c422">&#9670;&nbsp;</a></span>process_menu_events()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sgl::PopupMenu::process_menu_events </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>option</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calls the proper handler for the user's selection </p>
+
+</div>
+</div>
+<a id="acb9af736a51c4baf7c37735341c8f71e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb9af736a51c4baf7c37735341c8f71e">&#9670;&nbsp;</a></span>remove_menu_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sgl::PopupMenu::remove_menu_item </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Removes a menu item and its associated handler. The current menu item name is supplied. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>a string listed for the current menu choice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
+
+</div>
+</div>
+<a id="a509071d969685c375e79d8c156f2dc6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509071d969685c375e79d8c156f2dc6d">&#9670;&nbsp;</a></span>replace_menu_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sgl::PopupMenu::replace_menu_item </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>old_name</em>, </td>
@@ -232,7 +346,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacesgl.html#aad4d310a7daf8eec908ed89e33baf7c2">WindowCallback</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacesgl.html#a93e0a7ed69a0298ca4c1350ea477177a">MenuItemFunction</a>&#160;</td>
           <td class="paramname"><em>func</em>&#160;</td>
         </tr>
         <tr>
@@ -259,100 +373,30 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb020374cfc5432c9e807f8370bfbbcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb020374cfc5432c9e807f8370bfbbcd">&#9670;&nbsp;</a></span>execute_handler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void sgl::PopupMenu::execute_handler </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Invokes the proper handler when the user selects an item in a popup menu. Client ordinarily do not call this method directly, nor do they override it. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>an index into the table of handlers maintained by this popup menu </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
-
-</div>
-</div>
-<a id="a68cb10c3e2e314936e84b9247e7a4844"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68cb10c3e2e314936e84b9247e7a4844">&#9670;&nbsp;</a></span>process_menu_events()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void sgl::PopupMenu::process_menu_events </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>option</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Calls the proper handler for the user's selection </p>
-
-</div>
-</div>
-<a id="a772d3b3d26c5013be20ddd7de434b2bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a772d3b3d26c5013be20ddd7de434b2bc">&#9670;&nbsp;</a></span>remove_menu_item()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void sgl::PopupMenu::remove_menu_item </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>item</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Removes a menu item and its associated handler. The current menu item name is supplied. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">item</td><td>a string listed for the current menu choice </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>nothing </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7af925ae64d539a41c2ea90ffbbe8445"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7af925ae64d539a41c2ea90ffbbe8445">&#9670;&nbsp;</a></span>index</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sgl::PopupMenu::index</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The window associated with this popup menu </p>
+
+</div>
+</div>
 <a id="a75e35046b6d533fa66bca99a05070736"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a75e35046b6d533fa66bca99a05070736">&#9670;&nbsp;</a></span>items</h2>
 
@@ -376,31 +420,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa4927bb95e74682d58389196bff00444"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4927bb95e74682d58389196bff00444">&#9670;&nbsp;</a></span>window</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classsgl_1_1Window.html">Window</a>* sgl::PopupMenu::window</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The window associated with this popup menu </p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="sgl_8h_source.html">sgl.h</a></li>
+<li><a class="el" href="sgl_8hpp_source.html">sgl.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

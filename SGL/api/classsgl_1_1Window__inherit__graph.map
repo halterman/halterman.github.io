@@ -1,4 +1,5 @@
 <map id="sgl::Window" name="sgl::Window">
-<area shape="rect" id="node2" href="$classsgl_1_1ObjectWindow.html" title="sgl::ObjectWindow" alt="" coords="5,80,137,107"/>
-<area shape="rect" id="node3" href="$classsgl_1_1OGLWindow.html" title="sgl::OGLWindow" alt="" coords="161,80,283,107"/>
+<area shape="rect" id="node2" href="$classsgl_1_1ObjectWindow.html" title="sgl::ObjectWindow" alt="" coords="17,80,149,107"/>
+<area shape="rect" id="node4" href="$classsgl_1_1OGLWindow.html" title="sgl::OGLWindow" alt="" coords="173,80,295,107"/>
+<area shape="rect" id="node3" href="$classsgl_1_1ProceduralWindow.html" title="sgl::ProceduralWindow" alt="" coords="5,155,161,181"/>
 </map>

@@ -5,7 +5,7 @@
  version="1.0"> 
 
 <xsl:import
- href="/usr/share/docbook-xsl/fo/docbook.xsl"/> 
+ href="/usr/share/xml/docbook/stylesheet/docbook-xsl/fo/fop.xsl"/> 
 
 <xsl:param name="section.autolabel" select="1"/> 
 <xsl:param name="section.label.includes.component.label" select="1"/> 
@@ -142,7 +142,8 @@
               <xsl:when test="$position = 'right'">
                 <xsl:attribute name="color">red</xsl:attribute>
                 <xsl:attribute name="font-style">italic</xsl:attribute>
-                <xsl:text>Version 0.0.2 2009-09-15</xsl:text>
+                <!-- <xsl:text>Version 0.0.2 2009-09-15</xsl:text> -->
+                <xsl:text>Version 0.9.5 2019-02-17</xsl:text>
               </xsl:when>
             </xsl:choose>
           </xsl:when>       <!-- Single-sided -->
@@ -157,7 +158,8 @@
                   <xsl:otherwise> <!-- left/odd -->
                     <xsl:attribute name="color">red</xsl:attribute>
                     <xsl:attribute name="font-style">italic</xsl:attribute>
-                    <xsl:text>Version 0.0.2 2009-09-15</xsl:text>
+                    <!-- <xsl:text>Version 0.0.2 2009-09-15</xsl:text> -->
+                    <xsl:text>Version 0.9.5 2019-09-17</xsl:text>
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
@@ -170,7 +172,8 @@
                                   $sequence = 'blank'">
                     <xsl:attribute name="color">red</xsl:attribute>
                     <xsl:attribute name="font-style">italic</xsl:attribute>
-                    <xsl:text>Version 0.0.2 2009-09-15</xsl:text>
+                    <!-- <xsl:text>Version 0.0.2 2009-09-15</xsl:text> -->
+                    <xsl:text>Version 0.9.5 2019-02-17</xsl:text>
                   </xsl:when>
                   <xsl:otherwise> <!-- left/odd -->
                     <fo:page-number/>
